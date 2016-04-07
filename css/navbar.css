@@ -1,0 +1,60 @@
+/* navbar */
+.navbar-default {
+    background-color: #3F51B5;
+    border: none;
+    border-radius: 0;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: white;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: rgba(255, 255, 255, 0.7);
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: white;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: white;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #7986CB;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
+.signInButton {
+    color: rgba(255, 255, 255, 0.7);
+    background-color: inherit;
+    border-color: rgba(255, 255, 255, 0.7);
+}
+.signInButton:hover,
+.signInButton:focus {
+    color: white;
+    background-color: inherit;
+    border-color: white;
+}
+.signInButton:active:focus {
+    background-color: #303F9F;
+    outline: none; !important;
+    outline-style: none;
+    border-color: white;
+    color: white;
+}

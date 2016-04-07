@@ -1,0 +1,16 @@
+/* Footer */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    padding-bottom: 10px;
+}
+.footer-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#copyright {
+    float: right;
+    margin-right: 0;
+    color: #777;
+}
