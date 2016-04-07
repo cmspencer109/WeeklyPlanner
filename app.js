@@ -29,6 +29,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     //     }
     // });
 
+    // $scope.email
+
     myFirebaseRef.authWithPassword({
         email    : "bobtony@firebase.com",
         password : "correcthorsebatterystaple"
