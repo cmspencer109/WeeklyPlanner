@@ -2,6 +2,31 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
 .controller('MainController', function($scope, $filter, $window, $location) {
 
+    // Day name lookup
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+    $scope.week = []
+    var date = new Date()
+    $scope.initWeek = function(day, date, month, year, weekLength) {
+        if(weekLength == 5) {
+
+        } else if(weekLength == 7) {
+            console.log(day)
+            if(day != 0) {
+                date = date - day
+                day = 0
+            }
+            for(var i = 0; $scope.week.length < weekLength; i++) {
+                $scope.week.push({date: days[day] + ' ' + month + '/' + date + '/' + year, content: 'You have no tasks for today!'})
+                day++
+                date++
+            }
+        } else {
+            console.log('Invalid week length')
+        }
+    }
+    $scope.initWeek(date.getDay(), date.getDate(), date.getMonth(), date.getFullYear(), 7)
+
     var myFirebaseRef = new Firebase("https://sizzling-torch-2036.firebaseio.com/")
 
     $scope.signUp = function(newEmail, newPassword) {

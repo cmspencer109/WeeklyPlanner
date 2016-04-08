@@ -19,3 +19,12 @@ a:focus {
 .footer-links a:focus {
     color: #333;
 }
+
+/* Dashboard panels */
+.week {
+    display: flex;
+    flex-direction: row;
+}
+.day {
+    width: calc(100% / 7);
+}
