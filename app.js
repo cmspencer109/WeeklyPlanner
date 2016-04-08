@@ -7,29 +7,72 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     $scope.week = []
     var date = new Date()
-    $scope.initWeek = function(day, date, month, year, weekLength) {
-        var today = day
+
+    $scope.day = date.getDay()
+    $scope.date = date.getDate()
+    $scope.month = date.getMonth()+1
+    $scope.year = date.getFullYear()
+    $scope.weekLength = 7
+
+    $scope.initWeek = function(date, weekLength) {
+        $scope.date = date
         if(weekLength == 5) {
 
         } else if(weekLength == 7) {
-            if(day != 0) {
-                date = date - day
-                day = 0
+            if($scope.day != 0) {
+                $scope.date = $scope.date - $scope.day
+                $scope.day = 0
             }
             for(var i = 0; $scope.week.length < weekLength; i++) {
-                if(day == today) {
+
+                // If its the current day
+                var d = new Date()
+                if($scope.date == d.getDate() && $scope.month == d.getMonth()+1 && $scope.year == d.getFullYear()) {
                     var isToday = true
-                    console.log('true')
-                } else {var isToday = false}
-                $scope.week.push({date: days[day] + ' ' + month + '/' + date + '/' + year, content: 'You have no tasks for today!', currentDay: isToday})
-                day++
-                date++
+                    var isMonth = true
+                    var isYear = true
+                } else {
+                    var isToday = false
+                    var isMonth = false
+                    var isYear = false
+                }
+
+                $scope.week.push({date: days[$scope.day] + ' ' + $scope.month + '/' + $scope.date + '/' + $scope.year, content: 'You have no tasks for today!', currentDay: isToday, currentMonth: isMonth, currentYear: isYear})
+
+                if($scope.date >= daysInMonth($scope.month, $scope.year)) { // going forwards
+                    console.log('> than days in month')
+                    $scope.month = $scope.month + 1
+                    $scope.date = 0
+                }
+            //     else if($scope.date <= daysInMonth($scope.month, $scope.year)) {
+            //        console.log('< than days in month')
+            //        $scope.month = $scope.month - 1
+            //        $scope.date = daysInMonth($scope.month, $scope.year) - 7
+            //    }
+                $scope.day++
+                $scope.date++
             }
         } else {
-            console.log('Invalid week length')
+            console.log('Invalid week length: ' + weekLength)
         }
     }
-    $scope.initWeek(date.getDay(), date.getDate(), date.getMonth(), date.getFullYear(), 7)
+    $scope.initWeek($scope.date, $scope.weekLength)
+
+    // Week nav functions
+    $scope.nextWeek = function(date, weekLength) {
+        $scope.week = []
+        $scope.date = date + weekLength
+        $scope.initWeek($scope.date, $scope.weekLength)
+    }
+    $scope.previousWeek = function(date, weekLength) {
+        $scope.week = []
+        $scope.date = date - weekLength
+        $scope.initWeek($scope.date, $scope.weekLength)
+    }
+
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
+    }
 
     var myFirebaseRef = new Firebase("https://sizzling-torch-2036.firebaseio.com/")
 

@@ -1,4 +1,14 @@
-<h1>Dashboard</h1>
+<h3>Month date-date
+    <span class="weekNavButtons">
+        <button class="btn btn-default" ng-click="previousWeek(date, weekLength)">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+        <button class="btn btn-default" ng-click="nextWeek(date, weekLength)">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+    </span>
+</h3>
+<hr>
 
 <div class="week">
     <div ng-repeat="day in week" ng-class="day.currentDay ? 'currentDay' : 'notCurrentDay'" class="panel panel-default day">
