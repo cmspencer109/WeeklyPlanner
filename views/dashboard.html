@@ -1,7 +1,7 @@
 <h1>Dashboard</h1>
 
-<div class="week" ng-repeat="day in week">
-    <div class="panel panel-default day">
+<div class="week">
+    <div ng-repeat="day in week" ng-class="day.currentDay ? 'currentDay' : 'notCurrentDay'" class="panel panel-default day">
         <div class="panel-heading">
             {{day.date}}
         </div>
