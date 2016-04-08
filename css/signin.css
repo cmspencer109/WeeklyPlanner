@@ -1,7 +1,30 @@
+.loginContainer {
+    display: flex;
+    flex-direction: row;
+}
+.signin {
+    margin: 0 50px;
+    min-width: 330px;
+    flex-grow: 1;
+}
+.divider {
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: #ccc;
+}
+.signup {
+    margin: 0 50px;
+    min-width: 330px;
+    flex-grow: 1;
+}
+.accountInfo {
+    margin-top: 10px;
+}
+.signUpButton {
+    margin-top: 10px;
+}
 /* Sign In */
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
   margin: 0 auto;
 }
 .form-signin .form-signin-heading,
@@ -11,6 +34,7 @@
 .form-signin .checkbox {
   font-weight: normal;
 }
+.form-signup .form-control,
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -23,11 +47,13 @@
 .form-signin .form-control:focus {
   z-index: 2;
 }
+.form-signup input[type="email"],
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+.form-signup input[type="password"],
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;

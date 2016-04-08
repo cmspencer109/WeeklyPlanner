@@ -7,11 +7,11 @@ angular.module('dashboard')
             controller: 'MainController'
         })
         .when('/objectives', {
-            templateUrl: '/views/objectives.html',
+            templateUrl: '/views/goals.html',
             controller: 'MainController'
         })
         .when('/achievements', {
-            templateUrl: '/views/achievements.html',
+            templateUrl: '/views/accomplishments.html',
             controller: 'MainController'
         })
         .when('/about', {

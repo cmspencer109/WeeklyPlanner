@@ -1,6 +1,6 @@
 /* navbar */
 .navbar-default {
-    background-color: #3F51B5;
+    background-color: #2196F3;
     border: none;
     border-radius: 0;
 }
@@ -52,7 +52,7 @@
     border-color: white;
 }
 .signInButton:active:focus {
-    background-color: #303F9F;
+    background-color: #1976D2;
     outline: none; !important;
     outline-style: none;
     border-color: white;
