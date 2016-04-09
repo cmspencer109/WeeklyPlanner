@@ -7,7 +7,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     $scope.week = []
 
-    var nowMoment = moment()
+    var now = moment()
+    var current = moment()
     var weekLength = 7
 
     $scope.initWeek = function(moment, weekLength) {
@@ -16,7 +17,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
-                $scope.week.push({date: startMoment.format('dddd')+ ' ' + startMoment.format('MM/DD/YYYY'), content: 'You have no tasks for today!', moment: startMoment})
+                var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
+                $scope.week.push({date: startMoment.format('dddd')+ ' ' + startMoment.format('MM/DD/YYYY'), content: 'You have no tasks for today!', moment: startMoment, type: type})
                 startMoment.add(1, 'days').calendar()
             }
             startMoment.subtract(1, 'days').calendar()
@@ -24,22 +26,37 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
             console.log('Invalid week length: ' + weekLength)
         }
     }
-    $scope.initWeek(nowMoment, weekLength)
+    $scope.initWeek(current, weekLength)
+
+    function getType(startMoment, now) {
+        if(startMoment < now) {
+            console.log('past')
+            return 'past'
+        }
+        if(startMoment == now) {
+            console.log('present')
+            return 'present'
+        }
+        if(startMoment > now) {
+            console.log('future')
+            return 'future'
+        }
+    }
 
     // Week nav functions
     $scope.nextWeek = function() {
         $scope.week = []
-        nowMoment = nowMoment.add(7, 'days')
-        $scope.initWeek(nowMoment, weekLength)
+        current = current.add(7, 'days')
+        $scope.initWeek(current, weekLength)
     }
     $scope.previousWeek = function() {
         $scope.week = []
-        nowMoment = nowMoment.subtract(7, 'days')
-        $scope.initWeek(nowMoment, weekLength)
+        current = current.subtract(7, 'days')
+        $scope.initWeek(current, weekLength)
     }
 
-    $scope.checkDay = function() {
-
+    $scope.checkDay = function(day) {
+        // If day is past present or future and the coresponding class
     }
 
     function daysInMonth(month, year) {
@@ -47,63 +64,62 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     }
 
     // Firebase
-    // var myFirebaseRef = new Firebase("https://weeklyplanner.firebaseio.com/")
-    //
-    // $scope.signUp = function(newEmail, newPassword) {
-    //     myFirebaseRef.createUser({
-    //         email : newEmail,
-    //         password : newPassword
-    //     }, function(error, userData) {
-    //         if (error) {
-    //             console.log("Error creating user:", error);
-    //         } else {
-    //             console.log("Successfully created user account with uid:", userData.uid);
-    //         }
-    //     });
-    //     $scope.newEmail = ''
-    //     $scope.newPassword = ''
-    // }
-    //
-    // $scope.signIn = function(email, password) {
-    //     myFirebaseRef.authWithPassword({
-    //         email : $scope.email,
-    //         password : $scope.password
-    //     }, function(error, authData) {
-    //         if (error) {
-    //             console.log("Login Failed!", error);
-    //         } else {
-    //             console.log("Authenticated successfully with payload:", authData);
-    //             $location.path('/').replace(); // path not hash
-    //             $scope.$apply()
-    //         }
-    //     }, {remember: "sessionOnly"});
-    // }
-    //
-    // // Save data
-    // var usersRef = myFirebaseRef.child("users");
-    // usersRef.set({
-    //     cmspencer109: {
-    //         date_of_birth: "November 11, 1999",
-    //         full_name: "Christopher Spencer"
-    // },
-    //     sonrisesoftware: {
-    //         date_of_birth: "February 16, 1997",
-    //         full_name: "Michael Spencer"
-    //     }
-    // });
-    //
-    // // Update data
-    // var sonrisesoftwareRef = usersRef.child("sonrisesoftware");
-    // sonrisesoftwareRef.update({
-    //     "favorite_sport": "Airsoft"
-    // });
-    //
-    // // Get data
-    // // Attach an asynchronous callback to read the data at our posts reference
-    // myFirebaseRef.child('users').on("value", function(snapshot) {
-    //     console.log(snapshot.val());
-    // }, function (errorObject) {
-    //     console.log("The read failed: " + errorObject.code);
-    // });
+    var myFirebaseRef = new Firebase("https://weeklyplanner.firebaseio.com/")
 
+    $scope.signUp = function(newEmail, newPassword) {
+        myFirebaseRef.createUser({
+            email : newEmail,
+            password : newPassword
+        }, function(error, userData) {
+            if (error) {
+                console.log("Error creating user:", error);
+            } else {
+                console.log("Successfully created user account with uid:", userData.uid);
+            }
+        });
+        $scope.newEmail = ''
+        $scope.newPassword = ''
+    }
+
+    $scope.signIn = function(email, password) {
+        myFirebaseRef.authWithPassword({
+            email : $scope.email,
+            password : $scope.password
+        }, function(error, authData) {
+            if (error) {
+                console.log("Login Failed!", error);
+            } else {
+                console.log("Authenticated successfully with payload:", authData);
+                $location.path('/').replace(); // path not hash
+                $scope.$apply()
+            }
+        }, {remember: "sessionOnly"});
+    }
+
+    // Save data
+    var usersRef = myFirebaseRef.child("users");
+    usersRef.set({
+        cmspencer109: {
+            date_of_birth: "November 11, 1999",
+            full_name: "Christopher Spencer"
+    },
+        sonrisesoftware: {
+            date_of_birth: "February 16, 1997",
+            full_name: "Michael Spencer"
+        }
+    });
+
+    // Update data
+    var sonrisesoftwareRef = usersRef.child("sonrisesoftware");
+    sonrisesoftwareRef.update({
+        "favorite_sport": "Airsoft"
+    });
+
+    // Get data
+    // Attach an asynchronous callback to read the data at our posts reference
+    myFirebaseRef.child('users').on("value", function(snapshot) {
+        console.log(snapshot.val());
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
 })
