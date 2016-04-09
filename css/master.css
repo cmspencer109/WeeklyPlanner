@@ -34,6 +34,14 @@ a:focus {
     background-color: #4CAF50;
     /*border-color: #4CAF50;*/
 }
+.futureDay > .panel-heading {
+    color: white;
+    background-color: #2196F3;
+    /*border-color: #2196F3;*/
+}
+.pastDay > .panel {
+    opacity: 0.5;
+}
 
 /* Week nav buttons */
 .weekNavButtons {
