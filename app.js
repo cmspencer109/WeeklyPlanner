@@ -56,8 +56,10 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         $scope.initWeek(current, weekLength)
     }
 
-    $scope.checkDay = function(day) {
-        // If day is past present or future and the coresponding class
+    $scope.currentWeek = function() {
+        $scope.week = []
+        current = moment()
+        $scope.initWeek(current, weekLength)
     }
 
     function daysInMonth(month, year) {

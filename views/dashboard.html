@@ -1,5 +1,8 @@
 <h3>{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
     <span class="weekNavButtons">
+        <button class="btn btn-default currentWeekButton" ng-click="currentWeek()">
+            <span class="glyphicon glyphicon-home"></span>
+        </button>
         <button class="btn btn-default" ng-click="previousWeek()">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </button>
@@ -11,7 +14,7 @@
 <hr>
 
 <div class="week">
-    <div ng-repeat="day in week" class="panel panel-default day" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">{{checkDay(day)}}
+    <div ng-repeat="day in week" class="panel panel-default day" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">
         <div class="panel-heading">
             {{day.date}}
         </div>
