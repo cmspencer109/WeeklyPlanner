@@ -22,7 +22,7 @@ a:focus {
 
 /* Dashboard panels */
 .panel-default > .panel-heading {
-    /*background-color: white;*/
+    background-color: #ccc;
 }
 .panel-default > .panel-footer {
     background-color: white;

@@ -6,11 +6,15 @@ angular.module('dashboard')
             templateUrl: '/views/dashboard.html',
             controller: 'MainController'
         })
-        .when('/objectives', {
+        .when('/dashboard', {
+            templateUrl: '/views/dashboard.html',
+            controller: 'MainController'
+        })
+        .when('/goals', {
             templateUrl: '/views/goals.html',
             controller: 'MainController'
         })
-        .when('/achievements', {
+        .when('/accomplishments', {
             templateUrl: '/views/accomplishments.html',
             controller: 'MainController'
         })
