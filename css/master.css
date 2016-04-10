@@ -21,6 +21,16 @@ a:focus {
 }
 
 /* Dashboard panels */
+.panel-default > .panel-heading {
+    /*background-color: white;*/
+}
+.panel-default > .panel-footer {
+    background-color: white;
+}
+.panel {
+    box-shadow: 0 2px 3px #aaa;
+    border: none;
+}
 .week {
     display: flex;
     flex-direction: row;
