@@ -24,6 +24,10 @@ a:focus {
 .panel-default > .panel-heading {
     background-color: #ccc;
 }
+.panel-default > .panel-body {
+    margin: 0;
+    padding: 0;
+}
 .panel-default > .panel-footer {
     background-color: white;
 }
@@ -58,6 +62,16 @@ a:focus {
     color: white;
     background-color: #2196F3;
     /*border-color: #2196F3;*/
+}
+
+/* Day items */
+.itemsList {
+    margin: 0;
+    padding-left: 30px;
+}
+.item {
+    margin: 0;
+    padding: 0;
 }
 
 /* Week nav buttons */

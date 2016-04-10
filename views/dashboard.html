@@ -20,7 +20,13 @@
                 {{day.date}}
             </div>
             <div class="panel-body">
-                {{day.items[0]}}
+                <ul class="itemsList">
+                    <li class="item" ng-repeat="item in day.items track by $index">
+                        <div class="checkbox">
+                            <input type="checkbox" value="">{{item}}
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="panel-footer">
                 <div class="input-group">
