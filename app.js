@@ -30,15 +30,12 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     function getType(startMoment, now) {
         if(startMoment < now) {
-            console.log('past')
             return 'past'
         }
         if(startMoment == now) {
-            console.log('present')
             return 'present'
         }
         if(startMoment > now) {
-            console.log('future')
             return 'future'
         }
     }

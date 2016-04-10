@@ -11,7 +11,7 @@
 <hr>
 
 <div class="week">
-    <div ng-repeat="day in week" class="panel panel-default day">{{checkDay(day)}}
+    <div ng-repeat="day in week" class="panel panel-default day" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">{{checkDay(day)}}
         <div class="panel-heading">
             {{day.date}}
         </div>

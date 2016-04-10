@@ -29,7 +29,16 @@ a:focus {
     width: calc(100% / 7);
     margin: 0 10px;
 }
-.currentDay > .panel-heading {
+.pastDay > .panel-heading {
+    opacity: 0.5;
+}
+.pastDay > .panel-body {
+    opacity: 0.5;
+}
+.pastDay > .panel-footer {
+    opacity: 0.5;
+}
+.presentDay > .panel-heading {
     color: white;
     background-color: #4CAF50;
     /*border-color: #4CAF50;*/
@@ -38,9 +47,6 @@ a:focus {
     color: white;
     background-color: #2196F3;
     /*border-color: #2196F3;*/
-}
-.pastDay > .panel {
-    opacity: 0.5;
 }
 
 /* Week nav buttons */
