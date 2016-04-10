@@ -73,6 +73,9 @@ a:focus {
     margin: 0;
     padding: 0;
 }
+.noItemsMessage {
+    margin: 10px;
+}
 
 /* Week nav buttons */
 .weekNavButtons {

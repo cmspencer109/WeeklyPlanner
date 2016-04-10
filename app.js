@@ -21,7 +21,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: ['test', 'test two'], moment: startMoment, type: type})
+                var items = getItems(startMoment)
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment, type: type})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
                 startMoment.add(1, 'days').calendar()
@@ -45,6 +46,19 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         }
     }
 
+    function getItems(startMoment) {
+        // Check firebase to see if there are any objects with a date that matches startMoment
+        // If so, return that array
+        // Else, return an empty array
+        return []
+    }
+
+    // Adding items
+    $scope.addItem = function(day, item) {
+        day.items.push(item)
+        getItems(day.moment)
+    }
+
     // Week nav functions
     $scope.nextWeek = function() {
         $scope.week = []
@@ -64,11 +78,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
-    }
-
-    // Adding items
-    $scope.addItem = function(day, item) {
-        day.items.push(item)
     }
 
     // Firebase
