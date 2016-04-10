@@ -34,10 +34,11 @@ a:focus {
 .week {
     display: flex;
     flex-direction: row;
+    margin: 0 -10px;
 }
 .day {
     width: calc(100% / 7);
-    margin: 0 10px;
+    margin: 0 calc(15px / 2);
 }
 .pastDay > .panel-heading {
     opacity: 0.5;
