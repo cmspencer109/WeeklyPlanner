@@ -11,6 +11,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     var current = moment()
     var weekLength = 7
 
+    // Initialize week
     $scope.initWeek = function(moment, weekLength) {
         var startMoment = moment.startOf('week')
         $scope.startOfWeek = startMoment.format('D')
@@ -20,7 +21,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                $scope.week.push({date: startMoment.format('dddd, MMMM D'), content: 'You have no tasks for today!', moment: startMoment, type: type})
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: ['You have no tasks for today!'], moment: startMoment, type: type})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
                 startMoment.add(1, 'days').calendar()
@@ -55,7 +56,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         current = current.subtract(7, 'days')
         $scope.initWeek(current, weekLength)
     }
-
     $scope.currentWeek = function() {
         $scope.week = []
         current = moment()
@@ -64,6 +64,11 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
+    }
+
+    // Adding items
+    $scope.addItem = function(day, item) {
+        day.items[0] = item
     }
 
     // Firebase

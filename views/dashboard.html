@@ -14,19 +14,21 @@
 <hr>
 
 <div class="week">
-    <div ng-repeat="day in week" class="panel panel-default day" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">
-        <div class="panel-heading">
-            {{day.date}}
-        </div>
-        <div class="panel-body">
-            {{day.content}}
-        </div>
-        <div class="panel-footer">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Add...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Add</button>
-                </span>
+    <div ng-repeat="day in week" class="day">
+        <div class="panel panel-default" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">
+            <div class="panel-heading">
+                {{day.date}}
+            </div>
+            <div class="panel-body">
+                {{day.items[0]}}
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Add..." ng-model="item">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="addItem(day, item)">Add</button>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
