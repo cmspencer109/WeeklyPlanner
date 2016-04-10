@@ -13,12 +13,16 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     $scope.initWeek = function(moment, weekLength) {
         var startMoment = moment.startOf('week')
+        $scope.startOfWeek = startMoment.format('D')
+        $scope.startMonth = startMoment.format('MMMM')
         if(weekLength == 5) {
 
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
                 $scope.week.push({date: startMoment.format('dddd')+ ' ' + startMoment.format('MM/DD/YYYY'), content: 'You have no tasks for today!', moment: startMoment, type: type})
+                $scope.endOfWeek = startMoment.format('D')
+                $scope.endMonth = startMoment.format('MMMM')
                 startMoment.add(1, 'days').calendar()
             }
             startMoment.subtract(1, 'days').calendar()
