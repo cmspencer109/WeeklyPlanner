@@ -26,8 +26,8 @@ angular.module('dashboard')
             templateUrl: '/views/gettingstarted.html',
             controller: 'MainController'
         })
-        .when('/signin', {
-            templateUrl: '/views/signin.html',
+        .when('/login', {
+            templateUrl: '/views/login.html',
             controller: 'MainController'
         })
         .otherwise({redirectTo: '/'})

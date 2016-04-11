@@ -14,7 +14,7 @@
 }
 /* link */
 .navbar-default .navbar-nav > li > a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -40,21 +40,24 @@
         color: #333;
     }
 }
-.signInButton {
-    color: rgba(255, 255, 255, 0.7);
+.authButtons {
+    color: rgba(255, 255, 255, 0.75);
     background-color: inherit;
-    border-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.75);
 }
-.signInButton:hover,
-.signInButton:focus {
+.authButtons:hover,
+.authButtons:focus {
     color: white;
     background-color: inherit;
     border-color: white;
 }
-.signInButton:active:focus {
-    background-color: #1976D2;
+.authButtons:active:focus {
+    background-color: inherit;
     outline: none; !important;
     outline-style: none;
     border-color: white;
     color: white;
+}
+.loginButton {
+    margin: 0 10px;
 }

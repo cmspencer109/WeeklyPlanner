@@ -2,101 +2,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
 .controller('MainController', function($scope, $filter, $window, $location) {
 
-    // Day name lookup
-    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
-    $scope.week = []
-
-    var now = moment()
-    var current = moment()
-    var weekLength = 7
-
-    // Initialize week
-    $scope.initWeek = function(moment, weekLength) {
-        var startMoment = moment.startOf('week')
-        $scope.startOfWeek = startMoment.format('D')
-        $scope.startMonth = startMoment.format('MMMM')
-        if(weekLength == 5) {
-
-        } else if(weekLength == 7) {
-            for(var i = 0; $scope.week.length < weekLength; i++) {
-                var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                var items = getItems(startMoment)
-                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment, type: type})
-                $scope.endOfWeek = startMoment.format('D')
-                $scope.endMonth = startMoment.format('MMMM')
-                startMoment.add(1, 'days').calendar()
-            }
-            startMoment.subtract(1, 'days').calendar()
-        } else {
-            console.log('Invalid week length: ' + weekLength)
-        }
-    }
-    $scope.initWeek(current, weekLength)
-
-    function getType(startMoment, now) {
-        if(startMoment < now) {
-            return 'past'
-        }
-        if(startMoment == now) {
-            return 'present'
-        }
-        if(startMoment > now) {
-            return 'future'
-        }
-    }
-
-    function getItems(startMoment) {
-        // Check firebase to see if there are any objects with a date that matches startMoment
-        // If so, return that array
-        // Else, return an empty array
-        return []
-    }
-
-    // Adding items
-    $scope.addItem = function(day, item) {
-        day.items.push(item)
-        getItems(day.moment)
-    }
-
-    // Week nav functions
-    $scope.nextWeek = function() {
-        $scope.week = []
-        current = current.add(7, 'days')
-        $scope.initWeek(current, weekLength)
-    }
-    $scope.previousWeek = function() {
-        $scope.week = []
-        current = current.subtract(7, 'days')
-        $scope.initWeek(current, weekLength)
-    }
-    $scope.currentWeek = function() {
-        $scope.week = []
-        current = moment()
-        $scope.initWeek(current, weekLength)
-    }
-
-    function daysInMonth(month, year) {
-        return new Date(year, month, 0).getDate();
-    }
-
     // Firebase
     var myFirebaseRef = new Firebase("https://weeklyplanner.firebaseio.com/")
-
-    $scope.signUp = function(newEmail, newPassword) {
-        myFirebaseRef.createUser({
-            email : newEmail,
-            password : newPassword
-        }, function(error, userData) {
-            if (error) {
-                console.log("Error creating user:", error);
-            } else {
-                console.log("Successfully created user account with uid:", userData.uid);
-            }
-        });
-        $scope.newEmail = ''
-        $scope.newPassword = ''
-    }
 
     $scope.signIn = function(email, password) {
         myFirebaseRef.authWithPassword({
@@ -111,6 +18,21 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
                 $scope.$apply()
             }
         }, {remember: "sessionOnly"});
+    }
+
+    $scope.signUp = function(newEmail, newPassword) {
+        myFirebaseRef.createUser({
+            email : newEmail,
+            password : newPassword
+        }, function(error, userData) {
+            if (error) {
+                console.log("Error creating user:", error);
+            } else {
+                console.log("Successfully created user account with uid:", userData.uid);
+            }
+        });
+        $scope.newEmail = ''
+        $scope.newPassword = ''
     }
 
     // Save data
@@ -139,4 +61,113 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
+
+
+
+    // Day name lookup
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+    $scope.week = []
+
+    var now = moment()
+    var current = moment()
+    var weekLength = 7
+
+    // Initialize week
+    $scope.initWeek = function(moment, weekLength) {
+        var startMoment = moment.startOf('week')
+        $scope.startOfWeek = startMoment.format('D')
+        $scope.startMonth = startMoment.format('MMMM')
+        if(weekLength == 5) {
+
+        } else if(weekLength == 7) {
+            for(var i = 0; $scope.week.length < weekLength; i++) {
+                var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
+                var items = getItems(startMoment.format('MM-DD-YYYY'))
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type})
+                $scope.endOfWeek = startMoment.format('D')
+                $scope.endMonth = startMoment.format('MMMM')
+                startMoment.add(1, 'days').calendar()
+            }
+            startMoment.subtract(1, 'days').calendar()
+        } else {
+            console.log('Invalid week length: ' + weekLength)
+        }
+    }
+    $scope.initWeek(current, weekLength)
+
+    function getType(startMoment, now) {
+        if(startMoment < now) {
+            return 'past'
+        }
+        if(startMoment == now) {
+            return 'present'
+        }
+        if(startMoment > now) {
+            return 'future'
+        }
+    }
+
+    function getItems(startMoment) {
+        // Check firebase to see if there are any objects with a date that matches startMoment
+        console.log('START MOMENT ' + startMoment)
+        var itemsRef = myFirebaseRef.child('items')
+        itemsRef.once("value", function(snapshot) {
+            console.log('start moment ' + startMoment)
+            var item = snapshot.child(startMoment).val()
+            console.log('Item: ' + item)
+            var a = snapshot.exists()
+            console.log(a)
+        });
+
+        // // Get a reference to items
+        // var itemsRef = myFirebaseRef.child('items')
+        // // Retrieve new items as they are added to our database
+        // itemsRef.on("child_added", function(snapshot, prevChildKey) {
+        //     var newItem = snapshot.val()
+        //     // $scope.week.items.push(newItem.item)
+        //     console.log("text: " + newItem.item)
+        //     console.log("moment: " + newItem.moment)
+        // })
+
+        // If so, return an array of those items
+        // Else, return an empty array
+        return []
+    }
+
+
+
+    // Adding items
+    $scope.addItem = function(day, item) {
+        day.items.push(item) // Temp pushes to item array of that day
+        // Save item to firebase
+        var itemsRef = myFirebaseRef.child('items')
+        itemsRef.child(day.moment).set({
+            item: item,
+            moment: day.moment
+        });
+        // Go back and check that day for items to load the just added item
+        getItems(day.moment)
+    }
+
+    // Week nav functions
+    $scope.nextWeek = function() {
+        $scope.week = []
+        current = current.add(7, 'days')
+        $scope.initWeek(current, weekLength)
+    }
+    $scope.previousWeek = function() {
+        $scope.week = []
+        current = current.subtract(7, 'days')
+        $scope.initWeek(current, weekLength)
+    }
+    $scope.currentWeek = function() {
+        $scope.week = []
+        current = moment()
+        $scope.initWeek(current, weekLength)
+    }
+
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
+    }
 })

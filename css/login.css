@@ -1,24 +1,6 @@
-.loginContainer {
-    display: flex;
-    flex-direction: row;
-}
 .signin {
-    margin: 0 50px;
-    min-width: 330px;
-    flex-grow: 1;
-}
-.divider {
-    border-width: 0 1px 0 0;
-    border-style: solid;
-    border-color: #ccc;
-}
-.signup {
-    margin: 0 50px;
-    min-width: 330px;
-    flex-grow: 1;
-}
-.accountInfo {
-    margin-top: 10px;
+    margin: 0 auto;
+    max-width: 330px;
 }
 .signUpButton {
     margin-top: 10px;

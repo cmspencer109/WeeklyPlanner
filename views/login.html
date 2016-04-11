@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="signin">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Sign In</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input ng-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input ng-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signIn(email, password)">Sign In</button>
+        </form>
+    </div>
+</div>
