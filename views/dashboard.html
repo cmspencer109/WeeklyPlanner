@@ -1,8 +1,7 @@
 <h2>{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
     <span class="weekNavButtons">
-        <select class="form-control weekSelector">
-            <option value="one">7 day week</option>
-            <option value="two">5 day week</option>
+        <select class="form-control weekSelector" ng-model="weekLength">
+            <option ng-repeat="item in weekLengthOptions" value="{{ item.value }}">{{item.name}}</option>
         </select>
         <button class="btn btn-default" ng-click="currentWeek()">
             <span class="glyphicon glyphicon-home"></span>

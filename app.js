@@ -71,6 +71,19 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     var now = moment()
     var current = moment()
     var weekLength = 7
+    $scope.weekLengthOptions = [
+        {name: '7 day week', value: 7},
+        {name: '5 day week', value: 5}
+    ]
+    $scope.weekLength = '7' // Default weekLength
+
+    options = [{
+        name: 'Something Cool',
+        value: 'something-cool-value'
+    }, {
+        name: 'Something Else',
+        value: 'something-else-value'
+    }];
 
     // Initialize week
     $scope.initWeek = function(moment, weekLength) {
