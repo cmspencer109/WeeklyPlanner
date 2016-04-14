@@ -23,7 +23,7 @@ a:focus {
     color: #333;
 }
 
-/* Dashboard panels */
+/* All panels */
 .panel-default > .panel-heading {
     background-color: #ccc;
 }
@@ -38,6 +38,8 @@ a:focus {
     box-shadow: 0 2px 3px #aaa;
     border: none;
 }
+
+/* Dashboard panels */
 .week {
     display: flex;
     flex-direction: row;
@@ -78,6 +80,7 @@ a:focus {
 }
 .noItemsMessage {
     margin: 10px;
+    color: #999;
 }
 
 /* Week nav buttons */
@@ -86,4 +89,55 @@ a:focus {
 }
 .currentWeekButton {
     margin-right: 15px;
+}
+
+/* Goals */
+.goalsPanel > .panel-heading {
+    color: white;
+    background-color: #f44336;
+    /*border-color: #f44336;*/
+    font-weight: bold;
+}
+.noGoalsMessage {
+    margin: 35px;
+    text-align: center;
+}
+.noGoalsMessage .subMessage {
+    margin-top: 10px;
+    color: #999;
+    font-size: 18px;
+}
+.goalButtons {
+    float: right;
+}
+
+/* Accomplishments */
+.accomplishmentsPanel > .panel-heading {
+    color: white;
+    background-color: #3F51B5;
+    font-weight: bold
+}
+.noAccomplishmentsMessage {
+    margin: 35px;
+    text-align: center;
+}
+.noAccomplishmentsMessage .subMessage {
+    margin-top: 10px;
+    color: #999;
+    font-size: 18px;
+}
+.accomplishmentsButtons {
+    float: right;
+}
+.accomplishmentText {
+    font-style: italic;
+    font-weight: bold;
+}
+.glyphicon-star {
+    color: #FFC107;
+}
+.completedDate {
+    font-weight: bold;
+    color: #999;
+    float: right;
 }

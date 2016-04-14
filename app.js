@@ -63,9 +63,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     });
 
 
-
-    // Day name lookup
-    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    // Dashboard
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] // Day name lookup
 
     $scope.week = []
 
@@ -135,8 +134,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         return []
     }
 
-
-
     // Adding items
     $scope.addItem = function(day, item) {
         day.items.push(item) // Temp pushes to item array of that day
@@ -169,5 +166,21 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
+    }
+
+    // Goals
+    $scope.goals = []
+
+    $scope.addGoal = function(goal) {
+        console.log(goal)
+        $scope.week.push(goal)
+    }
+
+    // Accomplishments
+    $scope.accomplishments = ['Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl']
+
+    $scope.addAccomplishment = function(goal) {
+        console.log(goal)
+        $scope.week.push(goal)
     }
 })

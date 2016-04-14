@@ -1,1 +1,26 @@
-<h1>Accomplishments</h1>
+<div class="container">
+    <h2>Accomplishments
+        <span class="goalButtons">
+            <button class="btn btn-default">
+                <span class="glyphicon glyphicon-tasks"></span>
+            </button>
+            <button class="btn btn-default">
+                <span class="glyphicon glyphicon-save"></span>
+            </button>
+        </span>
+    </h2>
+    <hr>
+    <div class="panel panel-default accomplishmentsPanel">
+        <div class="panel-heading">
+            Accomplishments list
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item goal" ng-repeat="accomplishment in accomplishments track by $index">
+                <span class="glyphicon glyphicon-star"></span><span class="accomplishmentText"> {{accomplishment}}</span><span class="completedDate">4-13-2016</span>
+            </li>
+        </ul>
+        <div class="panel-body">
+            <h3 class="noAccomplishmentsMessage" ng-show="accomplishments.length === 0">You have no accomplishments!<div class="subMessage">Go set some goals so you can accomplish something!</div></h3>
+        </div>
+    </div>
+</div>
