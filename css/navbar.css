@@ -22,11 +22,13 @@
 }
 /* mobile version */
 .navbar-default .navbar-toggle {
-    border-color: white;
+    border-color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.75);
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #7986CB;
+    background-color: inherit;
+    border-color: white;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: white;

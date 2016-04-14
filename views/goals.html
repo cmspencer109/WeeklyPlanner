@@ -2,13 +2,13 @@
     <h2>Goals
         <span class="goalButtons">
             <button class="btn btn-default">
-                <span class="glyphicon glyphicon-save"></span>
-            </button>
-            <button class="btn btn-default">
                 <span class="glyphicon glyphicon-heart"></span>
             </button>
             <button class="btn btn-default">
                 <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button class="btn btn-default">
+                <span class="glyphicon glyphicon-save"></span>
             </button>
         </span>
     </h2>
@@ -21,7 +21,7 @@
             <ul class="goalsList">
                 <li class="goal" ng-repeat="goal in goals track by $index">
                     <div class="checkbox">
-                        <input type="checkbox" value="">{{goal}}
+                        <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal}}</span>
                     </div>
                 </li>
             </ul>
@@ -29,9 +29,9 @@
         </div>
         <div class="panel-footer">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Add..." ng-model="goal">
+                <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="goal">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="addGoal(goal)">Add</button>
+                    <button class="btn btn-default" type="button" ng-click="addGoal(goal)">Create Goal</button>
                 </span>
             </div>
         </div>

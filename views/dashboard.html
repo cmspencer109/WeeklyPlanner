@@ -1,6 +1,10 @@
 <h2>{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
     <span class="weekNavButtons">
-        <button class="btn btn-default currentWeekButton" ng-click="currentWeek()">
+        <select class="form-control weekSelector">
+            <option value="one">7 day week</option>
+            <option value="two">5 day week</option>
+        </select>
+        <button class="btn btn-default" ng-click="currentWeek()">
             <span class="glyphicon glyphicon-home"></span>
         </button>
         <button class="btn btn-default" ng-click="previousWeek()">
@@ -23,7 +27,7 @@
                 <ul class="itemsList">
                     <li class="item" ng-repeat="item in day.items track by $index">
                         <div class="checkbox">
-                            <input type="checkbox" value="">{{item}}
+                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{item}}</span>
                         </div>
                     </li>
                 </ul>

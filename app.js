@@ -173,14 +173,14 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     $scope.addGoal = function(goal) {
         console.log(goal)
-        $scope.week.push(goal)
+        $scope.goals.push(goal)
     }
 
     // Accomplishments
     $scope.accomplishments = ['Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl']
 
-    $scope.addAccomplishment = function(goal) {
-        console.log(goal)
-        $scope.week.push(goal)
+    $scope.addAccomplishment = function(accomplishment) {
+        console.log(accomplishment)
+        $scope.accomplishments.push(accomplishment)
     }
 })

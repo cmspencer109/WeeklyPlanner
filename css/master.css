@@ -38,6 +38,10 @@ a:focus {
     box-shadow: 0 2px 3px #aaa;
     border: none;
 }
+.itemChecked {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
 
 /* Dashboard panels */
 .week {
@@ -87,8 +91,10 @@ a:focus {
 .weekNavButtons {
     float: right;
 }
-.currentWeekButton {
-    margin-right: 15px;
+.weekSelector {
+    display: inline;
+    width: 125px;
+    vertical-align: middle;
 }
 
 /* Goals */
