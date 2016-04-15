@@ -51,7 +51,7 @@ a:focus {
 }
 .day {
     width: calc(100% / 7);
-    margin: 0 calc(15px / 2);
+    margin: 0 10px;
 }
 .pastDay > .panel-heading {
     opacity: 0.5;
@@ -98,6 +98,15 @@ a:focus {
 }
 
 /* Goals */
+.goalsContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -10px;
+}
+.goalsPanel {
+    width: calc(100% / 2);
+    margin: 0 10px;
+}
 .goalsPanel > .panel-heading {
     color: white;
     background-color: #f44336;
@@ -114,6 +123,12 @@ a:focus {
     font-size: 18px;
 }
 .goalButtons {
+    float: right;
+}
+.openEye {
+    float: right;
+}
+.closeEye {
     float: right;
 }
 

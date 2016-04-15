@@ -13,26 +13,57 @@
         </span>
     </h2>
     <hr>
-    <div class="panel panel-default goalsPanel">
-        <div class="panel-heading">
-            Goal list
+    <div class="goalsContainer">
+        <!-- Short term goals -->
+        <div class="panel panel-default goalsPanel">
+            <div class="panel-heading">
+                Short term goals
+                <span class="glyphicon glyphicon-eye-open openEye"></span>
+                <span class="glyphicon glyphicon-eye-close closeEye" ng-hide="true"></span>
+            </div>
+            <div class="panel-body">
+                <ul class="goalsList">
+                    <li class="goal" ng-repeat="goal in shortGoals track by $index">
+                        <div class="checkbox">
+                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal.item}} {{goal.moment}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <h3 class="noGoalsMessage" ng-show="goals.length === 0"><span class="glyphicon glyphicon-ok"></span><br>You have no short term goals!<div class="subMessage">Create a goal now</div></h3>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="shortGoal">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="addShortGoal(shortGoal)">Create Goal</button>
+                    </span>
+                </div>
+            </div>
         </div>
-        <div class="panel-body">
-            <ul class="goalsList">
-                <li class="goal" ng-repeat="goal in goals track by $index">
-                    <div class="checkbox">
-                        <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal}}</span>
-                    </div>
-                </li>
-            </ul>
-            <h3 class="noGoalsMessage" ng-show="goals.length === 0"><span class="glyphicon glyphicon-ok"></span><br>You have no goals!<div class="subMessage">Add a goal now</div></h3>
-        </div>
-        <div class="panel-footer">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="goal">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="addGoal(goal)">Create Goal</button>
-                </span>
+        <!-- Long term goals -->
+        <div class="panel panel-default goalsPanel">
+            <div class="panel-heading">
+                Long term goals
+                <span class="glyphicon glyphicon-eye-open openEye"></span>
+                <span class="glyphicon glyphicon-eye-close closeEye" ng-hide="true"></span>
+            </div>
+            <div class="panel-body">
+                <ul class="goalsList">
+                    <li class="goal" ng-repeat="goal in longGoals track by $index">
+                        <div class="checkbox">
+                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal.item}} {{goal.moment}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <h3 class="noGoalsMessage" ng-show="goals.length === 0"><span class="glyphicon glyphicon-ok"></span><br>You have no long term goals!<div class="subMessage">Create a goal now</div></h3>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="longGoal">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="addLongGoal(longGoal)">Create Goal</button>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
