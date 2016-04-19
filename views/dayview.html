@@ -1,0 +1,45 @@
+<div class="container">
+    <a class="btn btn-default" href="#/dashboard">Back to week view</a>
+    <h2>{{clickedMoment}}
+        <span class="weekNavButtons">
+            <button class="btn btn-default" ng-click="currentWeek()">
+                <span class="glyphicon glyphicon-home"></span>
+            </button>
+            <button class="btn btn-default" ng-click="previousWeek()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <button class="btn btn-default" ng-click="nextWeek()">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </span>
+    </h2>
+    <hr>
+
+    <div class="week">
+        <div ng-repeat="day in week" ng-class="{sevenDayWeek: day.weekLength == 7, fiveDayWeek: day.weekLength == 5, oneDayWeek: day.weekLength == 1}">
+            <div class="panel panel-default" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">
+                <div class="panel-heading">
+                    {{day.date}}
+                </div>
+                <div class="panel-body">
+                    <ul class="itemsList">
+                        <li class="item" ng-repeat="item in day.items track by $index">
+                            <div class="checkbox">
+                                <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{item}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="noItemsMessage" ng-show="day.items.length === 0">Nothing to do today!</div>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Add..." ng-model="item">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="addItem(day, item)">Add</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

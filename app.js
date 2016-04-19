@@ -70,12 +70,11 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     var now = moment()
     var current = moment()
-    var weekLength = 7
     $scope.weekLengthOptions = [
-        {name: '7 day week', value: 7},
-        {name: '5 day week', value: 5}
+        {name: '5 day week', value: 5},
+        {name: '7 day week', value: 7}
     ]
-    $scope.weekLength = '7' // Default weekLength
+    $scope.weekLength = '5' // Default weekLength
 
     options = [{
         name: 'Something Cool',
@@ -90,13 +89,41 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         var startMoment = moment.startOf('week')
         $scope.startOfWeek = startMoment.format('D')
         $scope.startMonth = startMoment.format('MMMM')
-        if(weekLength == 5) {
-
+        if(weekLength == 1) {
+            // TODO: Blah, fix this stuff in comments
+            // var startMoment = moment
+            // $scope.startOfWeek = startMoment.format('D')
+            // $scope.startMonth = startMoment.format('MMMM')
+            // console.log($scope.startOfWeek)
+            // console.log($scope.startMonth)
+            for(var i = 0; $scope.week.length < weekLength; i++) {
+                var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
+                var items = getItems(startMoment.format('MM-DD-YYYY'))
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 1})
+                $scope.endOfWeek = startMoment.format('D')
+                $scope.endMonth = startMoment.format('MMMM')
+                startMoment.add(1, 'days').calendar()
+            }
+        } else if(weekLength == 5) {
+            var startMoment = moment.startOf('week').add(1, 'days')
+            $scope.startOfWeek = moment.format('D')
+            $scope.startMonth = moment.format('MMMM')
+            console.log($scope.startOfWeek)
+            console.log($scope.startMonth)
+            for(var i = 0; $scope.week.length < weekLength; i++) {
+                var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
+                var items = getItems(startMoment.format('MM-DD-YYYY'))
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 5})
+                $scope.endOfWeek = startMoment.format('D')
+                $scope.endMonth = startMoment.format('MMMM')
+                startMoment.add(1, 'days').calendar()
+            }
+            startMoment.subtract(1, 'days').calendar()
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
                 var items = getItems(startMoment.format('MM-DD-YYYY'))
-                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type})
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 7})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
                 startMoment.add(1, 'days').calendar()
@@ -106,7 +133,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
             console.log('Invalid week length: ' + weekLength)
         }
     }
-    $scope.initWeek(current, weekLength)
+    $scope.initWeek(current, $scope.weekLength)
 
     function getType(startMoment, now) {
         if(startMoment < now) {
@@ -122,14 +149,14 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     function getItems(startMoment) {
         // Check firebase to see if there are any objects with a date that matches startMoment
-        console.log('START MOMENT ' + startMoment)
+        // console.log('START MOMENT ' + startMoment)
         var itemsRef = myFirebaseRef.child('items')
         itemsRef.once("value", function(snapshot) {
-            console.log('start moment ' + startMoment)
+            // console.log('start moment ' + startMoment)
             var item = snapshot.child(startMoment).val()
-            console.log('Item: ' + item)
+            // console.log('Item: ' + item)
             var a = snapshot.exists()
-            console.log(a)
+            // console.log(a)
         });
 
         // // Get a reference to items
@@ -162,19 +189,31 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     // Week nav functions
     $scope.nextWeek = function() {
-        $scope.week = []
-        current = current.add(7, 'days')
-        $scope.initWeek(current, weekLength)
+        if($scope.weekLength == 1) {
+            $scope.week = []
+            current = current.add(1, 'days')
+            $scope.initWeek(current, $scope.weekLength)
+        } else {
+            $scope.week = []
+            current = current.add(7, 'days')
+            $scope.initWeek(current, $scope.weekLength)
+        }
     }
     $scope.previousWeek = function() {
-        $scope.week = []
-        current = current.subtract(7, 'days')
-        $scope.initWeek(current, weekLength)
+        if($scope.weekLength == 1) {
+            $scope.week = []
+            current = current.subtract(1, 'days')
+            $scope.initWeek(current, $scope.weekLength)
+        } else {
+            $scope.week = []
+            current = current.subtract(7, 'days')
+            $scope.initWeek(current, $scope.weekLength)
+        }
     }
     $scope.currentWeek = function() {
         $scope.week = []
         current = moment()
-        $scope.initWeek(current, weekLength)
+        $scope.initWeek(current, $scope.weekLength)
     }
 
     function daysInMonth(month, year) {

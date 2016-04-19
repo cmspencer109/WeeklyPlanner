@@ -10,6 +10,10 @@ angular.module('dashboard')
             templateUrl: '/views/dashboard.html',
             controller: 'MainController'
         })
+        .when('/dayview', {
+            templateUrl: '/views/dayview.html',
+            controller: 'MainController'
+        })
         .when('/goals', {
             templateUrl: '/views/goals.html',
             controller: 'MainController'

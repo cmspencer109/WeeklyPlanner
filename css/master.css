@@ -49,9 +49,17 @@ a:focus {
     flex-direction: row;
     margin: 0 -10px;
 }
-.day {
+.sevenDayWeek {
     width: calc(100% / 7);
-    margin: 0 10px;
+    margin: 0 5px;
+}
+.fiveDayWeek {
+    width: calc(100% / 5);
+    margin: 0 5px;
+}
+.oneDayWeek {
+    width: calc(100% / 1);
+    margin: 0 5px;
 }
 .pastDay > .panel-heading {
     opacity: 0.5;

@@ -17,9 +17,9 @@
 <hr>
 
 <div class="week">
-    <div ng-repeat="day in week" class="day">
+    <div ng-repeat="day in week" ng-class="{sevenDayWeek: day.weekLength == 7, fiveDayWeek: day.weekLength == 5, oneDayWeek: day.weekLength == 1}">
         <div class="panel panel-default" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">
-            <div class="panel-heading">
+            <div class="panel-heading" ng-click="viewDay(day)">
                 {{day.date}}
             </div>
             <div class="panel-body">
