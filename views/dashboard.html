@@ -16,7 +16,7 @@
 </h2>
 
 <div class="week">
-    <div ng-repeat="day in week" ng-class="{'seven-day-week': day.weekLength == 7, 'five-day-week': day.weekLength == 5">
+    <div ng-repeat="day in week" ng-class="{'seven-day-week': day.weekLength == 7, 'five-day-week': day.weekLength == 5}">
         <div class="day panel panel-default" ng-class="{'panel-default': day.type == 'past', 'panel-success': day.type == 'present', 'panel-info': day.type == 'future'}">
             <div class="panel-heading" ng-click="viewDay(day)">
                 {{day.date}}

@@ -94,6 +94,11 @@ footer {
     float: right;
     margin-right: 15px;
 }
+.goal-delete {
+    float: right;
+    margin-right: 15px;
+    margin-top: 3px;
+}
 
 /* Accomplishments */
 .accomplishments-panel .panel-heading {
