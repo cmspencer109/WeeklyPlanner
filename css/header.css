@@ -47,18 +47,18 @@
         color: #333;
     }
 }
-.loginButton {
+.login-button {
     color: rgba(255, 255, 255, 0.75);
     background-color: inherit;
     border-color: rgba(255, 255, 255, 0.75);
 }
-.loginButton:hover,
-.loginButton:focus {
+.login-button:hover,
+.login-button:focus {
     color: white;
     background-color: inherit;
     border-color: white;
 }
-.loginButton:active:focus {
+.login-button:active:focus {
     background-color: inherit;
     outline: none; !important;
     outline-style: none;
@@ -73,7 +73,6 @@
     height: 60px;
     padding-top: 0;
 }
-
 .navbar-btn {
     color: white;
     border: 2px solid white;
