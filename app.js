@@ -221,24 +221,19 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     }
 
     // Goals
-    $scope.shortGoals = []
-    $scope.longGoals = []
+    $scope.goals = []
 
-    $scope.addShortGoal = function(goal) {
+    $scope.addGoal = function(goal) {
         // Add short term goal to firebase
-        var shortGoalsRef = myFirebaseRef.child('shortGoals')
-        shortGoalsRef.child(goal).set({
+        var goalsRef = myFirebaseRef.child('goals')
+        goalsRef.child(goal).set({
             item: goal,
             moment: now.format('MM-DD-YYYY')
         });
-        shortGoalsRef.on('child_added', function(snapshot, prevChildKey) {
-            var newShortGoal = snapshot.val();
-            $scope.shortGoals.push({item: newShortGoal.item, moment: newShortGoal.moment})
+        goalsRef.on('child_added', function(snapshot, prevChildKey) {
+            var newGoal = snapshot.val();
+            $scope.goals.push({item: newGoal.item, moment: newGoal.moment})
         });
-    }
-
-    $scope.addLongGoal = function(goal) {
-        // Add long term goal to firebase
     }
 
     // Accomplishments

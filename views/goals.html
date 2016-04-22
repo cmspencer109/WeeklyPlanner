@@ -1,67 +1,33 @@
 <div class="container">
-    <h2>Goals
-        <span class="goalButtons">
-            <button class="btn btn-default">
-                <span class="glyphicon glyphicon-heart"></span>
-            </button>
-            <button class="btn btn-default">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-            <button class="btn btn-default">
-                <span class="glyphicon glyphicon-save"></span>
-            </button>
-        </span>
-    </h2>
-    <hr>
+    <h2>Goals</h2>
+    <br>
     <div class="goalsContainer">
-        <!-- Short term goals -->
-        <div class="panel panel-default goalsPanel">
-            <div class="panel-heading">
-                Short term goals
-                <span class="glyphicon glyphicon-eye-open openEye" ng-click="openEye = false" ng-show="openEye"></span>
-                <span class="glyphicon glyphicon-eye-close closeEye" ng-click="openEye = true" ng-hide="openEye"></span>
-            </div>
-            <div class="panel-body">
-                <ul class="goalsList">
-                    <li class="goal" ng-repeat="goal in shortGoals track by $index">
-                        <div class="checkbox">
-                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal.item}} {{goal.moment}}</span>
-                        </div>
-                    </li>
-                </ul>
-                <h3 class="noGoalsMessage" ng-show="goals.length === 0"><span class="glyphicon glyphicon-ok"></span><br>You have no short term goals!<div class="subMessage">Create a goal now</div></h3>
-            </div>
-            <div class="panel-footer">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="shortGoal">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="addShortGoal(shortGoal)">Create Goal</button>
-                    </span>
-                </div>
-            </div>
-        </div>
         <!-- Long term goals -->
         <div class="panel panel-default goalsPanel">
             <div class="panel-heading">
                 Long term goals
-                <span class="glyphicon glyphicon-eye-open openEye" ng-click="openEye = false" ng-show="openEye"></span>
-                <span class="glyphicon glyphicon-eye-close closeEye" ng-click="openEye = true" ng-hide="openEye"></span>
             </div>
             <div class="panel-body">
                 <ul class="goalsList">
-                    <li class="goal" ng-repeat="goal in longGoals track by $index">
+                    <li class="goal" ng-repeat="goal in goals track by $index">
                         <div class="checkbox">
-                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal.item}} {{goal.moment}}</span>
+                            <input type="checkbox" value="" ng-model="value">
+                            <span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal.item}}</span>
+                            <span class="goalDate">{{goal.moment}}</span>
                         </div>
                     </li>
                 </ul>
-                <h3 class="noGoalsMessage" ng-show="goals.length === 0"><span class="glyphicon glyphicon-ok"></span><br>You have no long term goals!<div class="subMessage">Create a goal now</div></h3>
+                <div class="no-goals" ng-show="goals.length === 0">
+                    <i class="fa fa-frown-o" aria-hidden="true"></i>
+                    <h3>You have no goals!</h3>
+                    <h4>Set a goal now</h4>
+                </div>
             </div>
             <div class="panel-footer">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="longGoal">
+                    <input type="text" class="form-control" placeholder="Set a new goal..." ng-model="goal">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="addLongGoal(longGoal)">Create Goal</button>
+                        <button class="btn btn-default" type="button" ng-click="addGoal(goal)">Create Goal</button>
                     </span>
                 </div>
             </div>

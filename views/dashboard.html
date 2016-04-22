@@ -1,10 +1,10 @@
-<h2>{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
+<h2 class="weekInfo">{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
     <span class="weekNavButtons">
         <select class="form-control weekSelector" ng-model="weekLength">
             <option ng-repeat="item in weekLengthOptions" value="{{ item.value }}">{{item.name}}</option>
         </select>
-        <button class="btn btn-default" ng-click="currentWeek()">
-            <span class="glyphicon glyphicon-home"></span>
+        <button class="btn btn-primary" ng-click="currentWeek()">
+            Today
         </button>
         <button class="btn btn-default" ng-click="previousWeek()">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -14,11 +14,10 @@
         </button>
     </span>
 </h2>
-<hr>
 
 <div class="week">
     <div ng-repeat="day in week" ng-class="{sevenDayWeek: day.weekLength == 7, fiveDayWeek: day.weekLength == 5, oneDayWeek: day.weekLength == 1}">
-        <div class="panel panel-default" ng-class="{pastDay: day.type == 'past', presentDay: day.type == 'present', futureDay: day.type == 'future'}">
+        <div class="day panel panel-default" ng-class="{'panel-default': day.type == 'past', 'panel-success': day.type == 'present', 'panel-info': day.type == 'future'}">
             <div class="panel-heading" ng-click="viewDay(day)">
                 {{day.date}}
             </div>
@@ -30,7 +29,10 @@
                         </div>
                     </li>
                 </ul>
-                <div class="noItemsMessage" ng-show="day.items.length === 0">Nothing to do today!</div>
+                <div class="no-items" ng-show="day.items.length === 0">
+                    <i class="fa fa-smile-o" aria-hidden="true"></i>
+                    Nothing to do today!
+                </div>
             </div>
             <div class="panel-footer">
                 <div class="input-group">

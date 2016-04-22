@@ -1,84 +1,29 @@
-html {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
 body {
-    background-color: rgb(246, 246, 246);
+    background: url('/basic.png');
+    background-repeat: repeat;
 }
 
-/* Links */
-a {
-    color: #64B5F6;
-}
-a:hover,
-a:focus {
-    color: #2196F3;
-    text-decoration: none;
-}
-
-.footer-links a {
-    color: #777;
-}
-.footer-links a:hover,
-.footer-links a:focus {
-    color: #333;
-}
-
-/* All panels */
-.panel-default > .panel-heading {
-    background-color: #ccc;
-}
-.panel-default > .panel-body {
-    margin: 0;
-    padding: 0;
-}
-.panel-default > .panel-footer {
-    background-color: white;
-}
-.panel {
-    box-shadow: 0 2px 3px #aaa;
-    border: none;
-}
 .itemChecked {
     opacity: 0.5;
     text-decoration: line-through;
+}
+.weekInfo {
+    padding: 15px;
 }
 
 /* Dashboard panels */
 .week {
     display: flex;
     flex-direction: row;
-    margin: 0 -10px;
+    margin: 0 calc(15px / 2);
 }
 .sevenDayWeek {
     width: calc(100% / 7);
-    margin: 0 5px;
+    margin: 0 calc(15px / 2);
 }
 .fiveDayWeek {
     width: calc(100% / 5);
-    margin: 0 5px;
-}
-.oneDayWeek {
-    width: calc(100% / 1);
-    margin: 0 5px;
-}
-.pastDay > .panel-heading {
-    opacity: 0.5;
-}
-.pastDay > .panel-body {
-    opacity: 0.5;
-}
-.pastDay > .panel-footer {
-    opacity: 0.5;
-}
-.presentDay > .panel-heading {
-    color: white;
-    background-color: #4CAF50;
-    /*border-color: #4CAF50;*/
-}
-.futureDay > .panel-heading {
-    color: white;
-    background-color: #2196F3;
-    /*border-color: #2196F3;*/
+    margin: 0 calc(15px / 2);
 }
 
 /* Day items */
@@ -90,9 +35,28 @@ a:focus {
     margin: 0;
     padding: 0;
 }
-.noItemsMessage {
-    margin: 10px;
+
+.day.panel .panel-body {
+    position: relative;
+}
+
+.no-items {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     color: #999;
+}
+
+/* The smile icon */
+.no-items i {
+    font-size: 40px;
+    margin-bottom: 8px;
 }
 
 /* Week nav buttons */
@@ -112,39 +76,37 @@ a:focus {
     margin: 0 -10px;
 }
 .goalsPanel {
-    width: calc(100% / 2);
+    width: calc(100% / 1);
     margin: 0 10px;
 }
 .goalsPanel > .panel-heading {
     color: white;
-    background-color: #f44336;
-    /*border-color: #f44336;*/
+    background-color: #9b59b6;
     font-weight: bold;
 }
-.noGoalsMessage {
+.no-goals {
     margin: 35px;
     text-align: center;
 }
-.noGoalsMessage .subMessage {
+.no-goals h4 {
     margin-top: 10px;
     color: #999;
     font-size: 18px;
 }
-.goalButtons {
-    float: right;
+.no-goals i {
+    font-size: 40px;
+    /*margin-bottom: 8px;*/
 }
-.openEye {
+.goalDate {
+    font-weight: bold;
+    color: #999;
     float: right;
-}
-.closeEye {
-    float: right;
+    margin-right: 15px;
 }
 
 /* Accomplishments */
 .accomplishmentsPanel > .panel-heading {
-    color: white;
-    background-color: #3F51B5;
-    font-weight: bold
+    font-weight: bold;
 }
 .noAccomplishmentsMessage {
     margin: 35px;
