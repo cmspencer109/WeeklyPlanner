@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="login">
+        <form class="form-login">
+            <h2 class="form-login-heading">Create Account</h2>
+
+            <div style="margin: 10px 0;">Enter your name:</div>
+            <label for="newName" class="sr-only">Name</label>
+            <input ng-model="newEmail" type="email" id="newName" class="form-control" placeholder="Name" required autofocus>
+
+            <div style="margin: 10px 0;">Enter your email:</div>
+            <label for="newInputEmail" class="sr-only">Email address</label>
+            <input ng-model="newEmail" type="email" id="newInputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+            <div style="margin: 10px 0;">Enter your password:</div>
+            <label for="newInputPassword" class="sr-only">Password</label>
+            <input ng-model="newPassword" type="password" id="newInputPassword" class="form-control" placeholder="Password" required>
+            
+            <div style="margin: 10px 0;">Confirm your password:</div>
+            <label for="newInputPassword" class="sr-only">Confirm password</label>
+            <input ng-model="newPasswordConfirm" type="password" id="newInputPassword" class="form-control" placeholder="Password" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="createAccount(newEmail, newPassword)">Create</button>
+        </form>
+    </div>
+</div>

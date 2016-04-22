@@ -2,9 +2,6 @@
     margin: 0 auto;
     max-width: 330px;
 }
-.create-account-button {
-    margin-top: 10px;
-}
 /* Sign In */
 .form-login {
   margin: 0 auto;
@@ -16,7 +13,6 @@
 .form-login .checkbox {
   font-weight: normal;
 }
-.form-create-account .form-control,
 .form-login .form-control {
   position: relative;
   height: auto;
@@ -29,13 +25,11 @@
 .form-login .form-control:focus {
   z-index: 2;
 }
-.form-create-account input[type="email"],
 .form-login input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-create-account input[type="password"],
 .form-login input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;

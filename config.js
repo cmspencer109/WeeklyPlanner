@@ -34,5 +34,9 @@ angular.module('dashboard')
             templateUrl: '/views/login.html',
             controller: 'MainController'
         })
+        .when('/createaccount', {
+            templateUrl: '/views/createaccount.html',
+            controller: 'MainController'
+        })
         .otherwise({redirectTo: '/'})
 })
