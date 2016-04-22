@@ -13,9 +13,13 @@ a {
     color: #999999;
 }
 a:hover,
+a:focus,
 a:active {
     color: rgb(51, 51, 51);
     text-decoration: none;
+}
+a:focus {
+    text-decoration: underline;
 }
 
 /* Buttons */
