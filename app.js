@@ -237,7 +237,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     }
 
     // Accomplishments
-    $scope.accomplishments = ['Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl']
+    // $scope.accomplishments = ['Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl']
+    $scope.accomplishments = []
 
     $scope.addAccomplishment = function(accomplishment) {
         console.log(accomplishment)

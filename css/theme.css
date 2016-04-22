@@ -85,3 +85,8 @@ a:active {
     background-color: #3498db;
     border-color: #2980b9;
 }
+.panel-danger .panel-heading {
+    color: white;
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}

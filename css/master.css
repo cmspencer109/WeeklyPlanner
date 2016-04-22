@@ -74,28 +74,18 @@ body {
     display: flex;
     flex-direction: row;
     margin: 0 -10px;
+    margin-bottom: 20px;
 }
 .goalsPanel {
     width: calc(100% / 1);
     margin: 0 10px;
 }
-.goalsPanel > .panel-heading {
-    color: white;
-    background-color: #9b59b6;
+.goalsPanel .panel-heading {
     font-weight: bold;
 }
-.no-goals {
-    margin: 35px;
-    text-align: center;
-}
-.no-goals h4 {
-    margin-top: 10px;
-    color: #999;
-    font-size: 18px;
-}
-.no-goals i {
-    font-size: 40px;
-    /*margin-bottom: 8px;*/
+.goalsPanel .panel-body {
+    min-height: 0;
+    padding: 0;
 }
 .goalDate {
     font-weight: bold;
@@ -105,17 +95,12 @@ body {
 }
 
 /* Accomplishments */
-.accomplishmentsPanel > .panel-heading {
+.accomplishmentsPanel .panel-heading {
     font-weight: bold;
 }
-.noAccomplishmentsMessage {
-    margin: 35px;
-    text-align: center;
-}
-.noAccomplishmentsMessage .subMessage {
-    margin-top: 10px;
-    color: #999;
-    font-size: 18px;
+.accomplishmentsPanel .panel-body {
+    min-height: 0;
+    padding: 0;
 }
 .accomplishmentsButtons {
     float: right;
@@ -124,11 +109,23 @@ body {
     font-style: italic;
     font-weight: bold;
 }
-.glyphicon-star {
-    color: #FFC107;
+.fa-star {
+    color: #f1c40f;
 }
 .completedDate {
     font-weight: bold;
     color: #999;
     float: right;
+}
+
+/* No goals or accomplishments message */
+.no-goals-accomplishments {
+    padding: 0;
+    text-align: center;
+    margin: 35px;
+}
+.no-goals-accomplishments .subMessage {
+    margin-top: 10px;
+    color: #999;
+    font-size: 18px;
 }
