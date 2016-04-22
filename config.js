@@ -26,8 +26,8 @@ angular.module('dashboard')
             templateUrl: '/views/about.html',
             controller: 'MainController'
         })
-        .when('/gettingstarted', {
-            templateUrl: '/views/gettingstarted.html',
+        .when('/getstarted', {
+            templateUrl: '/views/getstarted.html',
             controller: 'MainController'
         })
         .when('/login', {
