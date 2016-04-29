@@ -196,5 +196,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
             console.log("added record with id " + id);
             $scope.accomplishments.$indexFor(id); // returns location in the array
         });
+        $scope.goals.$remove(goal)
     }
 })
