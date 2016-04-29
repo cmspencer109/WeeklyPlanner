@@ -4,16 +4,19 @@
     <div class="panel panel-success accomplishments-panel">
         <div class="panel-heading">
             Accomplishments Record
-            <span style="float: right;">4 Accomplishments</span>
+            <span style="float: right;">
+                <span ng-show="accomplishments.length == 1">1 Accomplishment</span>
+                <span ng-show="accomplishments.length != 1">{{accomplishments.length}} Accomplishments</span>
+            </span>
         </div>
         <ul class="list-group">
             <li class="list-group-item goal" ng-repeat="accomplishment in accomplishments track by $index">
                 <i class="fa fa-star" aria-hidden="true"></i>
-                <span class="accomplishment-text"> {{accomplishment}}</span>
-                <span class="completed-date">4-13-2016</span>
+                <span class="accomplishment-text"> {{accomplishment.item}}</span>
+                <i ng-click="accomplishments.$remove(accomplishment)" class="fa fa-trash-o accomplishment-delete" aria-hidden="true"></i>
+                <span class="completed-date">{{accomplishment.moment}}</span>
             </li>
         </ul>
-        <div class="panel-body">
             <h3 class="no-goals-accomplishments" ng-show="accomplishments.length === 0">
                 <i class="fa fa-star-o" aria-hidden="true"></i>
                 You have no accomplishments!

@@ -99,6 +99,9 @@ footer {
     margin-right: 15px;
     margin-top: 3px;
 }
+.goal-checked {
+    font-weight: bold;
+}
 
 /* Accomplishments */
 .accomplishments-panel .panel-heading {
@@ -122,6 +125,11 @@ footer {
     font-weight: bold;
     color: #999;
     float: right;
+}
+.accomplishment-delete {
+    float: right;
+    margin-left: 15px;
+    margin-top: 3px;
 }
 
 /* No goals or accomplishments message */

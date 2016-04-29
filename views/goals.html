@@ -6,16 +6,21 @@
         <div class="panel panel-danger goals-panel">
             <div class="panel-heading">
                 Long Term Goals
-                <span style="float: right;">0 Goals</span>
+                <span style="float: right;">
+                    <span ng-show="goals.length == 1">1 Goal</span>
+                    <span ng-show="goals.length != 1">{{goals.length}} Goals</span>
+                </span>
             </div>
             <div class="panel-body">
                 <ul class="goals-list">
                     <li class="goal" ng-repeat="goal in goals track by $index">
                         <div class="checkbox">
                             <input type="checkbox" value="" ng-model="value">
-                            <span ng-class="value ? 'itemChecked' : 'itemUnchecked'">{{goal.item}}</span>
+                            <span ng-class="value ? 'goal-checked' : 'goal-unchecked'">{{goal.item}}</span>
                             <i ng-click="goals.$remove(goal)" class="fa fa-trash-o goal-delete" aria-hidden="true"></i>
                             <span class="goal-date">{{goal.moment}}</span>
+
+                            <button ng-click="addToAccomplishments(goal)">Add</button>
                         </div>
                     </li>
                 </ul>

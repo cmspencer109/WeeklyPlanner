@@ -171,13 +171,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     // Goals
 
     var goalsRef = myFirebaseRef.child('goals')
-    // download the data from a Firebase reference into a (pseudo read-only) array
-    // all server changes are applied in realtime
+
     $scope.goals = $firebaseArray(goalsRef);
-    // create a query for the most recent 25 messages on the server
-    var query = goalsRef.orderByChild("timestamp").limitToLast(25);
-    // the $firebaseArray service properly handles database queries as well
-    $scope.filteredMessages = $firebaseArray(query);
 
     $scope.addGoal = function(item) {
 
@@ -189,21 +184,17 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     }
 
-
-
-
-
-
-
-
-
-
-
     // Accomplishments
-    // $scope.accomplishments = ['Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl', 'Asdfghjkl']
-    $scope.accomplishments = []
 
-    $scope.addAccomplishment = function(accomplishment) {
-        $scope.accomplishments.push(accomplishment)
+    var accomplishmentsRef = myFirebaseRef.child('accomplishments')
+
+    $scope.accomplishments = $firebaseArray(accomplishmentsRef);
+
+    $scope.addToAccomplishments = function(goal) {
+        $scope.accomplishments.$add({ item: goal.item, moment: now.format('MM-DD-YYYY')}).then(function(ref) {
+            var id = ref.key();
+            console.log("added record with id " + id);
+            $scope.accomplishments.$indexFor(id); // returns location in the array
+        });
     }
 })
