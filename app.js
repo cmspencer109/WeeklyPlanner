@@ -20,35 +20,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         }, {remember: "sessionOnly"});
     }
 
-    // Save data
-    var usersRef = myFirebaseRef.child("users");
-    usersRef.set({
-        cmspencer109: {
-            date_of_birth: "November 11, 1999",
-            full_name: "Christopher Spencer"
-    },
-        sonrisesoftware: {
-            date_of_birth: "February 16, 1997",
-            full_name: "Michael Spencer"
-        }
-    });
-
-    // Update data
-    var sonrisesoftwareRef = usersRef.child("sonrisesoftware");
-    sonrisesoftwareRef.update({
-        "favorite_sport": "Airsoft"
-    });
-
-    // Get data
-    // Attach an asynchronous callback to read the data at our posts reference
-    myFirebaseRef.child('users').on("value", function(snapshot) {
-        console.log(snapshot.val());
-    }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-    });
-
-
-    // Dashboard
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] // Day name lookup
 
     $scope.week = []
@@ -69,6 +40,20 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         value: 'something-else-value'
     }];
 
+    // Dashboard
+
+    var itemsRef = myFirebaseRef.child('items')
+
+    $scope.items = $firebaseArray(itemsRef);
+
+    $scope.addItem = function(day, item) {
+        $scope.items.$add({ item: item, moment: day.moment }).then(function(ref) {
+            var id = ref.key();
+            console.log("added record with id " + id);
+            $scope.items.$indexFor(id); // returns location in the array
+        });
+    }
+
     // Initialize week
     $scope.initWeek = function(moment, weekLength) {
         var startMoment = moment.startOf('week')
@@ -80,7 +65,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
             $scope.startMonth = moment.format('MMMM')
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                var items = getItems(startMoment.format('MM-DD-YYYY'))
+                var items = ['asdf']
                 $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 5})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
@@ -90,7 +75,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                var items = getItems(startMoment.format('MM-DD-YYYY'))
+                var items = ['asdf']
                 $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 7})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
@@ -113,26 +98,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         if(startMoment > now) {
             return 'future'
         }
-    }
-
-    function getItems(startMoment) {
-        // Check firebase to see if there are any objects with a date that matches startMoment
-        // If so, return an array of those items
-        // Else, return an empty array
-        return []
-    }
-
-    // Adding items
-    $scope.addItem = function(day, item) {
-        day.items.push(item) // Temp pushes to item array of that day
-        // Save item to firebase
-        var itemsRef = myFirebaseRef.child('items')
-        itemsRef.child(day.moment).set({
-            item: item,
-            moment: day.moment
-        });
-        // Go back and check that day for items to load the just added item
-        getItems(day.moment)
     }
 
     // Week nav functions
@@ -175,13 +140,11 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     $scope.goals = $firebaseArray(goalsRef);
 
     $scope.addGoal = function(item) {
-
         $scope.goals.$add({ item: item, moment: now.format('MM-DD-YYYY')}).then(function(ref) {
             var id = ref.key();
             console.log("added record with id " + id);
             $scope.goals.$indexFor(id); // returns location in the array
         });
-
     }
 
     // Accomplishments

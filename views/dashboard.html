@@ -22,6 +22,16 @@
                 {{day.date}}
             </div>
             <div class="panel-body">
+
+                <ul class="items-list">
+                    <li class="item" ng-repeat="item in items track by $index">
+                        <div class="checkbox">
+                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'item-checked' : 'item-unchecked'">{{item.item}}</span>
+                            <i ng-click="items.$remove(item)" class="fa fa-trash-o accomplishment-delete" aria-hidden="true"></i>
+                        </div>
+                    </li>
+                </ul>
+
                 <ul class="items-list">
                     <li class="item" ng-repeat="item in day.items track by $index">
                         <div class="checkbox">
@@ -29,6 +39,7 @@
                         </div>
                     </li>
                 </ul>
+
                 <div class="no-items" ng-show="day.items.length === 0">
                     <i class="fa fa-smile-o" aria-hidden="true"></i>
                     Nothing for today!
