@@ -47,7 +47,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     $scope.items = $firebaseArray(itemsRef);
 
     $scope.addItem = function(day, text) {
-        
+
         $scope.items.$add({ text: text, moment: day.moment }).then(function(ref) {
             var id = ref.key();
             console.log("added record with id " + id);
@@ -129,6 +129,16 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         current = moment()
         $scope.initWeek(current, $scope.weekLength)
     }
+
+    $scope.weekLengthChanged = function(weekLength) {
+        console.log('weekLengthChanged; now = ' + weekLength)
+        $scope.week = []
+        $scope.initWeek(current, weekLength)
+    }
+
+    $scope.buttonClicked = function() {
+        $scope.myVar = 2; // This will trigger $watch expression to kick in
+    };
 
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();

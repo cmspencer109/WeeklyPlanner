@@ -1,6 +1,6 @@
 <h2 class="week-info">{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
     <span class="week-nav-buttons">
-        <select class="form-control week-selector" ng-model="weekLength">
+        <select class="form-control week-selector" ng-model="weekLength" ng-change="weekLengthChanged(weekLength)">
             <option ng-repeat="item in weekLengthOptions" value="{{item.value}}">{{item.name}}</option>
         </select>
         <button class="btn btn-primary" ng-click="currentWeek()">
