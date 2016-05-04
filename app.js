@@ -46,8 +46,9 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
 
     $scope.items = $firebaseArray(itemsRef);
 
-    $scope.addItem = function(day, item) {
-        $scope.items.$add({ item: item, moment: day.moment }).then(function(ref) {
+    $scope.addItem = function(day, text) {
+        
+        $scope.items.$add({ text: text, moment: day.moment }).then(function(ref) {
             var id = ref.key();
             console.log("added record with id " + id);
             $scope.items.$indexFor(id); // returns location in the array
