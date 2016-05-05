@@ -91,8 +91,15 @@ a:focus {
     background-color: #3498db;
     border-color: #2980b9;
 }
+/* Danger Panel */
 .panel-danger .panel-heading {
     color: white;
     background-color: #e74c3c;
     border-color: #c0392b;
+}
+/* Warning Panel */
+.panel-warning .panel-heading {
+    color: white;
+    background-color: #FFC107;
+    border-color: #FFA000;
 }

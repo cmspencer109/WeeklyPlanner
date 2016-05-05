@@ -25,11 +25,9 @@ footer {
 }
 .seven-day-week {
     width: calc(100% / 7);
-    margin: 0 calc(15px / 2);
 }
 .five-day-week {
     width: calc(100% / 5);
-    margin: 0 calc(15px / 2);
 }
 .week-info {
     padding: 15px;
@@ -133,13 +131,48 @@ footer {
 }
 
 /* No goals or accomplishments message */
-.no-goals-accomplishments {
+.no-items-large {
     padding: 0;
     text-align: center;
     margin: 35px;
 }
-.no-goals-accomplishments .sub-message {
+.no-items-large .sub-message {
     margin-top: 10px;
     color: #999;
     font-size: 18px;
+}
+
+/* Notes */
+.notes-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -10px;
+    margin-bottom: 20px;
+}
+.notes-panel {
+    width: calc(100% / 1);
+    margin: 0 10px;
+}
+.notes-panel .panel-heading {
+    font-weight: bold;
+}
+.notes-panel .panel-body {
+    min-height: 0;
+    padding: 0;
+}
+.note-date {
+    float: right;
+    margin-right: 15px;
+}
+.note-delete {
+    float: right;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+.note-checked {
+    font-weight: bold;
+}
+.notes-list {
+    list-style: none;
+    padding-left: 15px;
 }

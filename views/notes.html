@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Notes</h2>
+    <br>
+    <div class="notes-container">
+        <!-- Long term notes -->
+        <div class="panel panel-warning notes-panel">
+            <div class="panel-heading">
+                General Notes
+                <span style="float: right;">
+                    <span ng-show="notes.length == 1">1 Note</span>
+                    <span ng-show="notes.length != 1">{{notes.length}} Notes</span>
+                </span>
+            </div>
+            <div class="panel-body">
+                <ul class="notes-list">
+                    <li class="note" ng-repeat="note in notes track by $index">
+                        <div class="checkbox">
+                            {{note.item}}
+                            <i ng-click="notes.$remove(note)" class="fa fa-trash-o note-delete" aria-hidden="true"></i>
+                            <span class="note-date">{{note.moment}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <h3 class="no-items-large" ng-show="notes.length === 0">
+                    <i class="fa fa-frown-o" aria-hidden="true"></i>
+                    You have no notes!
+                    <div class="sub-message">Create a new note now!</div>
+                </h3>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Create a new note..." ng-model="item">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="addNote(item)">Create Note</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

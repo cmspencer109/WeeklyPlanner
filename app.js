@@ -136,10 +136,6 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         $scope.initWeek(current, weekLength)
     }
 
-    $scope.buttonClicked = function() {
-        $scope.myVar = 2; // This will trigger $watch expression to kick in
-    };
-
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
     }
@@ -171,5 +167,19 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
             $scope.accomplishments.$indexFor(id); // returns location in the array
         });
         $scope.goals.$remove(goal)
+    }
+
+    // Notes
+
+    var notesRef = myFirebaseRef.child('notes')
+
+    $scope.notes = $firebaseArray(notesRef);
+
+    $scope.addNote = function(item) {
+        $scope.notes.$add({ item: item, moment: now.format('MM-DD-YYYY')}).then(function(ref) {
+            var id = ref.key();
+            console.log("added record with id " + id);
+            $scope.notes.$indexFor(id); // returns location in the array
+        });
     }
 })

@@ -18,6 +18,10 @@ angular.module('dashboard')
             templateUrl: '/views/goals.html',
             controller: 'MainController'
         })
+        .when('/notes', {
+            templateUrl: '/views/notes.html',
+            controller: 'MainController'
+        })
         .when('/accomplishments', {
             templateUrl: '/views/accomplishments.html',
             controller: 'MainController'
