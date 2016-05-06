@@ -41,8 +41,8 @@ footer {
     vertical-align: middle;
 }
 .items-list {
-    margin: 0;
-    padding-left: 30px;
+    margin-left: 15px;
+    padding: 0 15px;
 }
 .item {
     margin: 0;
@@ -94,11 +94,14 @@ footer {
 }
 .goal-delete {
     float: right;
-    margin-right: 15px;
     margin-top: 3px;
 }
 .goal-checked {
     font-weight: bold;
+}
+.goals-list {
+    margin-left: 15px;
+    padding: 0 15px;
 }
 
 /* Accomplishments */
@@ -118,6 +121,7 @@ footer {
 }
 .fa-star {
     color: #f1c40f;
+    padding-right: 10px;
 }
 .completed-date {
     font-weight: bold;
@@ -130,7 +134,7 @@ footer {
     margin-top: 3px;
 }
 
-/* No goals or accomplishments message */
+/* No items large message */
 .no-items-large {
     padding: 0;
     text-align: center;
@@ -166,7 +170,6 @@ footer {
 }
 .note-delete {
     float: right;
-    margin-right: 15px;
     margin-top: 3px;
 }
 .note-checked {
@@ -174,5 +177,5 @@ footer {
 }
 .notes-list {
     list-style: none;
-    padding-left: 15px;
+    padding: 0 15px;
 }
