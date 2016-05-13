@@ -2,11 +2,11 @@
 .footer-links {
     list-style: none;
     padding: 0;
-    margin: 40px;
+    margin: 30px;
 }
 .footer-links li {
     display: inline;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 #copyright {
     float: right;

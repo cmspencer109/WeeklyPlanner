@@ -43,12 +43,10 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     // Dashboard
 
     var itemsRef = myFirebaseRef.child('items')
-
     $scope.items = $firebaseArray(itemsRef);
 
-    $scope.addItem = function(day, text) {
-
-        $scope.items.$add({ text: text, moment: day.moment }).then(function(ref) {
+    $scope.addItem = function(newItem, dateItemGoesTo) {
+        $scope.items.$add({ text: newItem, dateItemGoesTo: dateItemGoesTo}).then(function(ref) {
             var id = ref.key();
             console.log("added record with id " + id);
             $scope.items.$indexFor(id); // returns location in the array
@@ -66,8 +64,10 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
             $scope.startMonth = moment.format('MMMM')
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                var items = ['asdf']
-                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 5})
+                var moment = startMoment.format('MM-DD-YYYY')
+                var items = $scope.items
+
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: moment, type: type, weekLength: 5})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
                 startMoment.add(1, 'days').calendar()
@@ -76,8 +76,10 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         } else if(weekLength == 7) {
             for(var i = 0; $scope.week.length < weekLength; i++) {
                 var type = getType(startMoment.format('MM/DD/YYYY'), now.format('MM/DD/YYYY'))
-                var items = ['asdf']
-                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: startMoment.format('MM-DD-YYYY'), type: type, weekLength: 7})
+                var moment = startMoment.format('MM-DD-YYYY')
+                var items = $scope.items
+
+                $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: moment, type: type, weekLength: 7})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')
                 startMoment.add(1, 'days').calendar()

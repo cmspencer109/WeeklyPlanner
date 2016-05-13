@@ -1,19 +1,36 @@
-<h2 class="week-info">{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}
+<div class="week-info">
+    <h2 style="display: inline;">{{startMonth}} {{startOfWeek}} - {{endMonth}} {{endOfWeek}}</h2>
+
     <span class="week-nav-buttons">
-        <select class="form-control week-selector" ng-model="weekLength" ng-change="weekLengthChanged(weekLength)">
+
+        <!-- <span style="margin-right: calc(15px / 2);">Go To Date:</span>
+        <form action="" class="form-inline" style="display: inline;">
+            <div class="form-group">
+                <div class="input-group" style="width: 220px;">
+                    <input type="text" class="form-control" placeholder="e.g. MM-DD-YYYY" ng-model="goToDate"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="goToDate(goToDate)">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form> -->
+
+        <select class="form-control week-nav-btn week-selector" ng-model="weekLength" ng-change="weekLengthChanged(weekLength)">
             <option ng-repeat="item in weekLengthOptions" value="{{item.value}}">{{item.name}}</option>
         </select>
-        <button class="btn btn-primary" ng-click="currentWeek()">
+        <button class="btn btn-primary week-nav-btn" ng-click="currentWeek()">
             This Week
         </button>
-        <button class="btn btn-default" ng-click="previousWeek()">
+        <button class="btn btn-default week-nav-btn" ng-click="previousWeek()">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
         <button class="btn btn-default" ng-click="nextWeek()">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
         </button>
     </span>
-</h2>
+</div>
 
 <div class="week">
     <div ng-repeat="day in week" ng-class="{'seven-day-week': day.weekLength == 7, 'five-day-week': day.weekLength == 5}">
@@ -23,24 +40,26 @@
             </div>
             <div class="panel-body" style="padding: 0;">
                 <ul class="items-list">
-                    <li class="item" ng-repeat="item in items track by $index">
+                    <li class="item" ng-repeat="item in items | filter:{dateItemGoesTo:day.moment}:true">
                         <div class="checkbox">
-                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'item-checked' : 'item-unchecked'">{{item.text}}</span>
+                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'item-checked' : 'item-unchecked'">
+                                {{item.text}}
+                            </span>
                             <i ng-click="items.$remove(item)" class="fa fa-trash-o accomplishment-delete" aria-hidden="true"></i>
                         </div>
                     </li>
                 </ul>
 
-                <div class="no-items" ng-show="items.length === 0">
+                <div class="no-items" ng-show="(items|filter:{dateItemGoesTo:day.moment}).length === 0">
                     <i class="fa fa-smile-o" aria-hidden="true"></i>
                     Nothing for today!
                 </div>
             </div>
             <div class="panel-footer">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Add..." ng-model="text">
+                    <input type="text" class="form-control" placeholder="Add..." ng-model="newItem">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="addItem(day, text)">Add</button>
+                        <button class="btn btn-default" type="button" ng-click="addItem(newItem, day.moment)">Add</button>
                     </span>
                 </div>
             </div>

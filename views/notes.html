@@ -14,11 +14,13 @@
             <div class="panel-body">
                 <ul class="notes-list">
                     <li class="note" ng-repeat="note in notes track by $index">
-                        <div class="checkbox">
+                        <span class="note-item">
                             {{note.item}}
-                            <i ng-click="notes.$remove(note)" class="fa fa-trash-o note-delete" aria-hidden="true"></i>
+                        </span>
+                        <span class="note-info">
                             <span class="note-date">{{note.moment}}</span>
-                        </div>
+                            <i ng-click="notes.$remove(note)" class="fa fa-trash-o note-delete" aria-hidden="true"></i>
+                        </span>
                     </li>
                 </ul>
                 <h3 class="no-items-large" ng-show="notes.length === 0">

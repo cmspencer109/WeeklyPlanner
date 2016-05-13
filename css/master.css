@@ -4,13 +4,13 @@ html {
     min-height: 100%;
 }
 body {
-    margin: 0 0 100px; /* bottom = footer height */
+    margin: 0 0 80px; /* bottom = footer height */
 }
 footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 80px;
     width: 100%;
 }
 
@@ -34,6 +34,9 @@ footer {
 }
 .week-nav-buttons {
     float: right;
+}
+.week-nav-btn {
+    margin-right: calc(15px / 2)
 }
 .week-selector {
     display: inline;
@@ -165,17 +168,29 @@ footer {
     padding: 0;
 }
 .note-date {
-    float: right;
-    margin-right: 15px;
 }
 .note-delete {
-    float: right;
-    margin-top: 3px;
+    margin-left: 15px;
 }
 .note-checked {
     font-weight: bold;
 }
+
 .notes-list {
     list-style: none;
     padding: 0 15px;
+}
+
+.note {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.note-item {
+}
+.note-info {
+    margin-left: 15px;
+    min-width: 94px;
 }
