@@ -22,6 +22,11 @@
             <div ng-include="'/includes/header.html'"></div>
         </header>
         <main>
+            <!-- TEMP message -->
+            <div ng-hide="clicked" style="margin: 0 15px;" class="alert alert-danger" role="alert">
+                <i class="fa fa-times" aria-hidden="true" ng-click="clicked = ! notClicked"></i>
+                Uh oh! Many things are still under development, so expect some things to not work.
+            </div>
             <div ng-view></div>
         </main>
         <footer>
