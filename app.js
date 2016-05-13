@@ -67,6 +67,8 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
                 var moment = startMoment.format('MM-DD-YYYY')
                 var items = $scope.items
 
+                // TODO: Have items retain their checked value. (i.e. store in firebase)
+
                 $scope.week.push({date: startMoment.format('dddd, MMMM D'), items: items, moment: moment, type: type, weekLength: 5})
                 $scope.endOfWeek = startMoment.format('D')
                 $scope.endMonth = startMoment.format('MMMM')

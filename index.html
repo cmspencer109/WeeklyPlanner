@@ -23,10 +23,11 @@
         </header>
         <main>
             <!-- TEMP message -->
-            <div ng-hide="clicked" style="margin: 0 15px;" class="alert alert-danger" role="alert">
-                <i class="fa fa-times" aria-hidden="true" ng-click="clicked = ! notClicked"></i>
-                Uh oh! Many things are still under development, so expect some things to not work.
+            <div style="margin: 0 15px;" class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Oh snap!</strong> Some things are still under development, so expect bugs and missing features.
             </div>
+            <!-- END of TEMP message -->
             <div ng-view></div>
         </main>
         <footer>
