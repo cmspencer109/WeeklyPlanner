@@ -53,17 +53,11 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         });
     }
 
-    // $scope.checkItem = function(item) {
-    //     $scope.items[0].checked = !item.checked
-    //     $scope.items.$save(0).then(function(ref) {
-    //         ref.key() === $scope.items[0].$id; // true
-    //     });
-    // }
-
+    // Update Firebase data for checked items using $save
     $scope.checkItem = function(item) {
-        $scope.items[0].checked = !item.checked
-        $scope.items.$save(0).then(function(ref) {
-            ref.key() === $scope.items[0].$id; // true
+        item.checked = !item.checked
+        $scope.items.$save($scope.items.$indexFor(item.$id)).then(function(ref) {
+            ref.key() === item.$id; // true
         });
     }
 
