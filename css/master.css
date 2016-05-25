@@ -100,21 +100,16 @@ footer {
     padding: 0;
 }
 .goal-date {
+    opacity: 0.5;
     font-weight: bold;
-    color: #999;
     float: right;
-    margin-right: 15px;
-}
-.goal-delete {
-    float: right;
-    margin-top: 3px;
 }
 .goal-checked {
     font-weight: bold;
 }
 .goals-list {
-    margin-left: 15px;
     padding: 0 15px;
+    list-style: none;
 }
 
 /* Accomplishments */
@@ -137,14 +132,9 @@ footer {
     padding-right: 10px;
 }
 .completed-date {
+    opacity: 0.5;
     font-weight: bold;
-    color: #999;
     float: right;
-}
-.accomplishment-delete {
-    float: right;
-    margin-left: 15px;
-    margin-top: 3px;
 }
 
 /* No items large message */
@@ -178,12 +168,7 @@ footer {
     padding: 0;
 }
 .note-date {
-}
-.note-delete {
-    margin-left: 15px;
-}
-.note-checked {
-    font-weight: bold;
+    opacity: 0.5;
 }
 
 .notes-list {

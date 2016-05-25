@@ -13,7 +13,7 @@
             <li class="list-group-item goal" ng-repeat="accomplishment in accomplishments track by $index">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <span class="accomplishment-text">{{accomplishment.item}}</span>
-                <i ng-click="accomplishments.$remove(accomplishment)" class="fa fa-trash-o accomplishment-delete" aria-hidden="true"></i>
+                <i ng-click="accomplishments.$remove(accomplishment)" class="fa fa-trash-o  list-item-pref" aria-hidden="true"></i>
                 <span class="completed-date">{{accomplishment.moment}}</span>
             </li>
         </ul>
