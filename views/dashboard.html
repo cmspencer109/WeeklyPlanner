@@ -53,14 +53,23 @@
                 </span>
             </div>
             <div class="panel-body" style="padding: 0;">
-                <ul class="items-list">
+                <ul class="items-list" style="list-style: none; margin-left: 0;">
                     <li class="item" ng-repeat="item in items | filter:{dateItemGoesTo:day.moment}:true">
+
                         <div class="checkbox">
-                            <input type="checkbox" value="" ng-model="value"><span ng-class="value ? 'item-checked' : 'item-unchecked'">
+                            <!-- <input type="checkbox" value="" ng-model="value"> -->
+
+                            <i ng-show="!item.checked" ng-click="checkItem(item)" class="fa fa-square-o" aria-hidden="true" style="margin-right: calc(15px/2);"></i>
+
+                            <i ng-show="item.checked" ng-click="checkItem(item)" class="fa fa-check-square-o" aria-hidden="true" style="margin-right: 6px;"></i>
+
+                            <span ng-class="item.checked ? 'item-checked' : 'item-unchecked'">
                                 {{item.text}}
                             </span>
-                            <i ng-click="items.$remove(item)" class="fa fa-trash-o accomplishment-delete" aria-hidden="true" ng-hide="value"></i>
+                            <i ng-click="items.$remove(item)" class="fa fa-trash-o list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
+                            <i ng-click="itemTimeClicked(item)" class="fa fa-clock-o list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
                         </div>
+
                     </li>
                 </ul>
 

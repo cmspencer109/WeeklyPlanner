@@ -43,14 +43,33 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     // Dashboard
 
     var itemsRef = myFirebaseRef.child('items')
-    $scope.items = $firebaseArray(itemsRef);
+    $scope.items = $firebaseArray(itemsRef)
 
     $scope.addItem = function(newItem, dateItemGoesTo) {
-        $scope.items.$add({ text: newItem, dateItemGoesTo: dateItemGoesTo}).then(function(ref) {
-            var id = ref.key();
-            console.log("added record with id " + id);
-            $scope.items.$indexFor(id); // returns location in the array
+        $scope.items.$add({ text: newItem, dateItemGoesTo: dateItemGoesTo, checked: false}).then(function(ref) {
+            var id = ref.key()
+            console.log("added record with id " + id)
+            $scope.items.$indexFor(id) // returns location in the array
         });
+    }
+
+    // $scope.checkItem = function(item) {
+    //     $scope.items[0].checked = !item.checked
+    //     $scope.items.$save(0).then(function(ref) {
+    //         ref.key() === $scope.items[0].$id; // true
+    //     });
+    // }
+
+    $scope.checkItem = function(item) {
+        $scope.items[0].checked = !item.checked
+        $scope.items.$save(0).then(function(ref) {
+            ref.key() === $scope.items[0].$id; // true
+        });
+    }
+
+    $scope.itemTimeClicked = function(item) {
+        alert(item.text + ' time has been clicked.')
+        // TODO: Bring up time schedule dialog.
     }
 
     // Initialize week
