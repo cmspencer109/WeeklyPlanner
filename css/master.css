@@ -56,19 +56,16 @@ footer {
     text-decoration: line-through;
 }
 .no-items {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    opacity: 0.5;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #999;
+    margin-bottom: 10px;
 }
 .no-items i {
     font-size: 40px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 .list-item-pref {
     float: right;
@@ -127,7 +124,7 @@ footer {
     font-style: italic;
     font-weight: bold;
 }
-.fa-star {
+.acc-star {
     color: #f1c40f;
     padding-right: 10px;
 }
@@ -139,14 +136,18 @@ footer {
 
 /* No items large message */
 .no-items-large {
-    padding: 0;
     text-align: center;
-    margin: 35px;
-}
-.no-items-large .sub-message {
-    margin-top: 10px;
-    color: #999;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
     font-size: 18px;
+}
+.no-items-large i {
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
 /* Notes */
@@ -170,20 +171,15 @@ footer {
 .note-date {
     opacity: 0.5;
 }
-
 .notes-list {
     list-style: none;
     padding: 0 15px;
 }
-
 .note {
     margin: 10px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.note-item {
 }
 .note-info {
     margin-left: 15px;

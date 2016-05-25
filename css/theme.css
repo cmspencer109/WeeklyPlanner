@@ -68,7 +68,6 @@ a:focus {
 }
 .panel-body {
     border-width: 2px;
-    min-height: 100px;
 }
 .panel-footer {
     border-width: 0;

@@ -3,20 +3,6 @@
 
     <span class="week-nav-buttons">
 
-        <!-- <span style="margin-right: calc(15px / 2);">Go To Date:</span>
-        <form action="" class="form-inline" style="display: inline;">
-            <div class="form-group">
-                <div class="input-group" style="width: 220px;">
-                    <input type="text" class="form-control" placeholder="e.g. MM-DD-YYYY" ng-model="goToDate"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="goToDate(goToDate)">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </form> -->
-
         <select class="form-control week-nav-btn week-selector" ng-model="weekLength" ng-change="weekLengthChanged(weekLength)">
             <option ng-repeat="item in weekLengthOptions" value="{{item.value}}">{{item.name}}</option>
         </select>
@@ -66,7 +52,7 @@
                             <span ng-class="item.checked ? 'item-checked' : 'item-unchecked'">
                                 {{item.text}}
                             </span>
-                            <i ng-click="items.$remove(item)" class="fa fa-trash-o list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
+                            <i ng-click="items.$remove(item)" class="fa fa-trash list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
                             <i ng-click="itemTimeClicked(item)" class="fa fa-clock-o list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
                         </div>
 
@@ -74,7 +60,7 @@
                 </ul>
 
                 <div class="no-items" ng-show="(items|filter:{dateItemGoesTo:day.moment}).length === 0">
-                    <i class="fa fa-smile-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                     Nothing for today!
                 </div>
             </div>
