@@ -20,7 +20,7 @@
 
 <div class="week">
     <div ng-repeat="day in week" ng-class="{'seven-day-week': day.weekLength == 7, 'five-day-week': day.weekLength == 5}">
-        <div class="day panel panel-default" ng-class="{'panel-default': day.type == 'past', 'panel-success': day.type == 'present', 'panel-info': day.type == 'future'}">
+        <div id="container" class="day panel panel-default" ng-class="{'panel-default': day.type == 'past', 'panel-success': day.type == 'present', 'panel-info': day.type == 'future'}">
             <div class="panel-heading" ng-click="viewDay(day)">
                 {{day.date}}
                 <span style="float: right;">
@@ -43,7 +43,7 @@
                     </span>
                 </span>
             </div>
-            <div class="panel-body" style="padding: 0;">
+            <div id="navi" class="panel-body" style="padding: 0;">
                 <ul class="items-list" style="list-style: none; margin-left: 0;">
                     <li class="item" ng-repeat="item in items | filter:{dateItemGoesTo:day.moment}:true">
 
@@ -68,12 +68,13 @@
                     <i class="fa fa-check" aria-hidden="true"></i>
                     Nothing for today!
                 </div>
+
             </div>
             <div class="panel-footer">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Add..." ng-model="newItem">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="addItem(newItem, day.moment); newItem = null">Add</button>
+                        <button class="btn btn-default" type="button" ng-click="addItem(newItem, day.moment); newItem = undefined">Add</button>
                     </span>
                 </div>
             </div>

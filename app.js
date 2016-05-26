@@ -178,7 +178,7 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
     $scope.accomplishments = $firebaseArray(accomplishmentsRef);
 
     $scope.addToAccomplishments = function(goal) {
-        $scope.accomplishments.$add({ item: goal.item, moment: now.format('MM-DD-YYYY')}).then(function(ref) {
+        $scope.accomplishments.$add({ item: goal.item, startMoment: goal.moment, finishMoment: now.format('MM-DD-YYYY')}).then(function(ref) {
             var id = ref.key();
             console.log("added record with id " + id);
             $scope.accomplishments.$indexFor(id); // returns location in the array

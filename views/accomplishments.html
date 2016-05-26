@@ -14,7 +14,9 @@
                 <i class="fa fa-star acc-star" aria-hidden="true"></i>
                 <span class="accomplishment-text">{{accomplishment.item}}</span>
                 <i ng-click="accomplishments.$remove(accomplishment)" class="fa fa-trash  list-item-pref" aria-hidden="true"></i>
-                <span class="completed-date">{{accomplishment.moment}}</span>
+                <span class="completed-date">{{accomplishment.finishMoment}}</span>
+                <span class="completed-date" style="margin: 0 calc(15px/2);">...</span>
+                <span class="completed-date">{{accomplishment.startMoment}}</span>
             </li>
         </ul>
 
