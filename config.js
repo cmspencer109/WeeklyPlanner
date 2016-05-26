@@ -22,6 +22,10 @@ angular.module('dashboard')
             templateUrl: '/views/notes.html',
             controller: 'MainController'
         })
+        .when('/stats', {
+            templateUrl: '/views/stats.html',
+            controller: 'MainController'
+        })
         .when('/accomplishments', {
             templateUrl: '/views/accomplishments.html',
             controller: 'MainController'

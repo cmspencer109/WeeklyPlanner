@@ -186,3 +186,23 @@ footer {
     margin-left: 15px;
     min-width: 94px;
 }
+
+/* Stats */
+.stats {
+    display: flex;
+    flex-direction: row;
+    margin: 0 calc(-15px / 2);
+}
+.stats .panel {
+    width: calc(100%/4);
+    margin: 0 calc(15px / 2);
+}
+.item-info {
+    float: right;
+}
+.completed {
+    background-color: rgba(46, 204, 113, 0.25);
+}
+.uncompleted {
+    background-color: rgba(231 ,76, 60, 0.25);
+}
