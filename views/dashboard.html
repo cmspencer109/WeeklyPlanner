@@ -25,15 +25,20 @@
                 {{day.date}}
                 <span style="float: right;">
                     <span ng-show="weekLength == 7">
-                        {{(items|filter:{dateItemGoesTo:day.moment}).length}}
+                        {{(items|filter:{dateItemGoesTo:day.moment, checked:false}).length}}
                     </span>
                     <span ng-show="weekLength == 5">
-                        {{(items|filter:{dateItemGoesTo:day.moment}).length}}
-                        <span ng-show="(items|filter:{dateItemGoesTo:day.moment}).length === 1">
-                             Item
+                        <span ng-show="(items|filter:{dateItemGoesTo:day.moment, checked:false}).length !== 0">
+                            {{(items|filter:{dateItemGoesTo:day.moment, checked:false}).length}}
                         </span>
-                        <span ng-show="(items|filter:{dateItemGoesTo:day.moment}).length !== 1">
-                             Items
+                        <span ng-show="(items|filter:{dateItemGoesTo:day.moment, checked:false}).length < 1">
+                            Done!
+                        </span>
+                        <span ng-show="(items|filter:{dateItemGoesTo:day.moment, checked:false}).length === 1">
+                            Item
+                        </span>
+                        <span ng-show="(items|filter:{dateItemGoesTo:day.moment, checked:false}).length > 1">
+                            Items
                         </span>
                     </span>
                 </span>
