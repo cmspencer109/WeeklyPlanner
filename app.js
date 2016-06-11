@@ -1,6 +1,34 @@
-angular.module('dashboard', ['ngRoute', 'firebase'])
+angular.module('dashboard', ['ngRoute', 'firebase', 'ngAnimate', 'ngTouch', 'ui.bootstrap'])
 
-.controller('MainController', function($scope, $filter, $window, $location, $firebaseArray) {
+.controller('MainController', function($scope, $filter, $window, $location, $firebaseArray, $sce) {
+
+    // Bootstrap UI Popover stuff
+
+    $scope.dynamicPopover = {
+        content: 'Hello, World!',
+        templateUrl: 'myPopoverTemplate.html',
+        title: 'Title'
+    };
+
+    $scope.placement = {
+        options: [
+            'top',
+            'top-left',
+            'top-right',
+            'bottom',
+            'bottom-left',
+            'bottom-right',
+            'left',
+            'left-top',
+            'left-bottom',
+            'right',
+            'right-top',
+            'right-bottom'
+        ],
+        selected: 'top'
+    };
+
+    $scope.htmlPopover = $sce.trustAsHtml('<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content');
 
     // Firebase
     var myFirebaseRef = new Firebase("https://weeklyplanner.firebaseio.com/")
@@ -61,10 +89,10 @@ angular.module('dashboard', ['ngRoute', 'firebase'])
         });
     }
 
-    $scope.itemTimeClicked = function(item) {
-        alert(item.text + ' time has been clicked.')
-        // TODO: Bring up time schedule dialog.
-    }
+    // $scope.itemTimeClicked = function(item) {
+    //     alert(item.text + ' time has been clicked.')
+    //     // TODO: Bring up time schedule dialog.
+    // }
 
     // Initialize week
     $scope.initWeek = function(moment, weekLength) {

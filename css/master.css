@@ -14,6 +14,11 @@ footer {
     width: 100%;
 }
 
+/* Popovers */
+.popover-content {
+width: 200px;
+}
+
 /* Dashboard */
 .week {
     display: flex;

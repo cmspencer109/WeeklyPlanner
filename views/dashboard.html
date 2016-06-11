@@ -57,8 +57,17 @@
                             <span ng-class="item.checked ? 'item-checked' : 'item-unchecked'">
                                 {{item.text}}
                             </span>
+
                             <i ng-click="items.$remove(item)" class="fa fa-trash list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
-                            <i ng-click="itemTimeClicked(item)" class="fa fa-clock-o list-item-pref" aria-hidden="true" ng-hide="item.checked"></i>
+
+                            <!-- Clock icon has popover for setting time of task -->
+                            <i class="fa fa-clock-o list-item-pref" aria-hidden="true"
+                            ng-click="itemTimeClicked(item)"
+                            ng-hide="item.checked"
+                            uib-popover="Set a time for this item (under development)."
+                            popover-title="Time"
+                            popover-placement="right"></i>
+
                         </div>
 
                     </li>
