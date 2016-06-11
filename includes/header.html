@@ -21,12 +21,45 @@
                 <li><a href="#/goals">Goals</a></li>
                 <li><a href="#/accomplishments">Accomplishments</a></li>
                 <li><a href="#/notes">Notes</a></li>
-                <li><a href="#/stats">Statistics</a></li>
+                <!-- <li><a href="#/stats">Statistics</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
                 <a style="margin-right: 15px;" class="btn btn-default navbar-btn login-button" href="#/createaccount">CREATE ACCOUNT</a>
-                <a class="btn btn-default navbar-btn login-button" href="#/login">LOGIN</a>
+
+                <button class="btn btn-default navbar-btn login-button" data-toggle="modal" data-target="#loginModal">SIGN IN</button>
+
             </ul>
         </div> <!-- /.navbar-collapse -->
     </div> <!-- /.container-fluid -->
 </nav>
+
+<!-- Modal -->
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Sign In</h2>
+      </div>
+      <div class="modal-body">
+          <form class="form-login">
+              <!-- <h2 class="form-login-heading">Sign In</h2> -->
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input ng-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input ng-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="remember-me"> Remember me
+                  </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signIn(email, password)" data-dismiss="modal">Login</button>
+          </form>
+      </div>
+    </div>
+
+  </div>
+</div>
